@@ -2,6 +2,7 @@ package master;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public final class LigaMaster {
@@ -26,19 +27,19 @@ public final class LigaMaster {
 		return ligaMaster;
 	}
 
-	private DT getMaster() {
-		new DT("Master","ARG123");
+	public DT getMaster() {
+		return new DT("Master","ARG123");
 	}
 
-	private List<Jugador> getListaJugador() {
-		listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
+	public Set<Jugador> getListaJugador() {
+		return listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
 	}
 
-	private List<DT> getDTsQuePagan() {
-		listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
+	public List<DT> getDTsQuePagan() {
+		return listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
 	}
 
-	private List<Jugador> getListaTransferibles() {
+	public List<Jugador> getListaTransferibles() {
 //		listaDT.stream().map(getListaJugador()).flatten.filter[precioVenta > 0].toSet    //TODO: VER COMO HACER ESTA PARTE (NUEVA FORMA)
 	}
 
@@ -54,7 +55,7 @@ public final class LigaMaster {
 //		printer.close
 //	}
 
-	void addDT(DT dt) {
+	void addDT(DT dt) throws Exception {
 		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
 			throw new Exception("Ese nombre de DT ya está en uso");
 
@@ -95,14 +96,14 @@ public final class LigaMaster {
 	}
 
 	public int getPartidosGanados(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).stream().filter(getPuntos(dt) == 3).size();
+		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 3).collect(Collectors.toList()).size();
 	}
 
 	public int getPartidosEmpatados(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 1].size;
+		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 1).collect(Collectors.toList()).size();
 	}
 
 	public int getPartidosPerdidos(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 0].size;
+		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 0).collect(Collectors.toList()).size();
 	}
 }
