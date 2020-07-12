@@ -92,7 +92,7 @@ public final class LigaMaster {
 
 	// Cálculo del Historial //TODO: Ver bien despues.
 	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
-//		listaTorneos.map[listaPartidos].flatten.filter[getJugoPartido(dt) && getJugoPartido(otroDT) && terminado].toList
+//		listaTorneos.stream().map(torneo -> torneo.getListaPartidos()).flatten.filter[getJugoPartido(dt) && getJugoPartido(otroDT) && terminado].toList
 	}
 
 	public int getPartidosGanados(DT dt, DT otroDT) {

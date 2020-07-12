@@ -13,7 +13,11 @@ public class Partido {
 			List<Jugador> golesVisitante = Arrays.asList();
 			List<Jugador> listaAmarillas = Arrays.asList();
 			List<Jugador> listaRojas = Arrays.asList();
-
+			
+			public int getNumeroFecha() {
+				return numeroFecha;
+			}
+			
 			public boolean getJugoPartido(DT dt) {
 				return dtLocal.equals(dt) || dtVisitante.equals(dt);
 			}
