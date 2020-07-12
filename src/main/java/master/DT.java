@@ -20,6 +20,11 @@ public class DT {
         this.nombreDT = _nombreDT;
         this.password = _password;
     }
+	
+	public DT(String _nombreDT){
+        this.nombreDT = _nombreDT;
+    }
+	
 	public void venderJugador(Jugador jugador, double precio) throws Exception {
 		if (!listaJugadores.contains(jugador))
 			throw new Exception("Ese jugador no es tuyo");
@@ -139,6 +144,13 @@ public class DT {
 	}
 	public String getNombreDT() {
 		return nombreDT;
+	}
+	
+	public List<Jugador> getListaJugadores() {
+		return listaJugadores;
+	}
+	public int getTorneosDisponibles() {
+		return torneosDisponibles;
 	}
 	
 }

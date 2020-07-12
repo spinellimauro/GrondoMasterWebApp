@@ -1,12 +1,16 @@
 package master;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class LigaMaster {
 
 	private static LigaMaster ligaMaster;
 
-	private List<Torneo> listaTorneos = newArrayList(new Torneo => [nombreTorneo = "Nuevo Torneo"]);
-	private List<DT> listaDT = newArrayList;
-	Mercado mercado=new Mercado;
+	private List<Torneo> listaTorneos = Arrays.asList(new Torneo("Nuevo Torneo"));
+	private List<DT> listaDT = Arrays.asList();
+	Mercado mercado = new Mercado();
 
 	private LigaMaster() {
     }
@@ -23,22 +27,19 @@ public final class LigaMaster {
 	}
 
 	private DT getMaster() {
-		new DT => [
-			nombreDT = "Master";
-			password = "ARG123";
-		]
+		new DT("Master","ARG123");
 	}
 
 	private List<Jugador> getListaJugador() {
-		return listaDT.map[listaJugadores].toSet;
+		listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
 	}
 
 	private List<DT> getDTsQuePagan() {
-		listaDT.filter[torneosDisponibles == 0].toSet
+		listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
 	}
 
 	private List<Jugador> getListaTransferibles() {
-		listaDT.map[listaJugador].flatten.filter[precioVenta > 0].toSet
+//		listaDT.stream().map(getListaJugador()).flatten.filter[precioVenta > 0].toSet    //TODO: VER COMO HACER ESTA PARTE (NUEVA FORMA)
 	}
 
 //	private void leerBase() {
@@ -54,49 +55,54 @@ public final class LigaMaster {
 //	}
 
 	void addDT(DT dt) {
-		if (listaDT.exists[nombreDT.equals(dt.nombreDT)])
-			throw new Exception("Ese nombre de DT ya está en uso")
+		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
+			throw new Exception("Ese nombre de DT ya está en uso");
 
-		if (listaDT.exists[nombreDT.equals(dt.nombreDT)])
-			throw new Exception("Ese nombre de Equipo ya está en uso")
+		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
+			throw new Exception("Ese nombre de Equipo ya está en uso");
 
-		listaDT.add(dt)
+		listaDT.add(dt);
 	}
 
 	void addTorneo(Torneo torneo) {
-		listaTorneos.add(torneo)
+		listaTorneos.add(torneo);
 	}
 
 	void removeTorneo(Torneo torneo) {
-		listaTorneos.remove(torneo)
+		listaTorneos.remove(torneo);
 	}
 
 	
 
 	public DT getPropietario(Jugador jugador) {
-		DT libre = new DT => [nombreDT = "Libre"]
-
-		listaDT.findFirst[listaJugadores.contains(jugador)] ?: libre
+		DT libre = new DT("Libre");
+		DT propietario = listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst();
+		
+		if(listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst() == null) {
+			return libre;
+		}else {
+			return propietario;
+		};
 	}
 
-	void update() {
-		listaJugador.forEach[update]
+//	void update() {
+//		listaJugador.forEach[update]
+//	}
+
+	// Cálculo del Historial //TODO: Ver bien despues.
+	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
+//		listaTorneos.map[listaPartidos].flatten.filter[getJugoPartido(dt) && getJugoPartido(otroDT) && terminado].toList
 	}
 
-	// Cálculo del Historial
-	def List<Partido> getPartidosJugados(DT dt, DT otroDT) {
-		listaTorneos.map[listaPartidos].flatten.filter[getJugoPartido(dt) && getJugoPartido(otroDT) && terminado].toList
+	public int getPartidosGanados(DT dt, DT otroDT) {
+		getPartidosJugados(dt, otroDT).stream().filter(getPuntos(dt) == 3).size();
 	}
 
-	int getPartidosGanados(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 3].size
+	public int getPartidosEmpatados(DT dt, DT otroDT) {
+		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 1].size;
 	}
 
-	int getPartidosEmpatados(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 1].size
-	}
-
-	int getPartidosPerdidos(DT dt, DT otroDT) {
-		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 0].size
+	public int getPartidosPerdidos(DT dt, DT otroDT) {
+		getPartidosJugados(dt, otroDT).filter[getPuntos(dt) == 0].size;
 	}
 }
