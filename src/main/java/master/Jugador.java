@@ -101,4 +101,8 @@ class Jugador {
 		return nivel;
 	}
 
+	public int getId() {
+		return id;
+	}
+
 }

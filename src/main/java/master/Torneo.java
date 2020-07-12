@@ -156,11 +156,11 @@ public class Torneo {
 			( fechaAnterior.exists[fueAmonestado(jugador)] && (getAmarillas(jugador) % limiteAmarillas == 0))
 	}
 
-	def DT getPropietario(Jugador jugador) {
+	public DT getPropietario(Jugador jugador) {
 		listaParticipantes.findFirst[listaJugadores.contains(jugador)]
 	}
 
-	def void terminarTorneo() {
+	public void terminarTorneo() {
 		if (terminado)
 			throw new Exception("El torneo ya terminó")
 
@@ -178,52 +178,52 @@ public class Torneo {
 }
 
 class EstadisticaTorneo {
-	String nombre
-	String equipo
-	int pj
-	int g
-	int e
-	int p
-	String goles
-	int pts
+	String nombre;
+	String equipo;
+	int pj;
+	int g;
+	int e;
+	int p;
+	String goles;
+	int pts;
 
-	new(DT dt, Torneo torneo) {
-		nombre = dt.nombreDT
-		equipo = dt.nombreEquipo
-		pj = torneo.getPartidosJugados(dt).size
-		g = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 3].size
-		e = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 1].size
-		p = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 0].size
-		goles = torneo.getGolesFavor(dt) + ":" + torneo.getGolesContra(dt)
-		pts = torneo.getPuntos(dt)
+	public EstadisticaTorneo(DT dt, Torneo torneo) {
+		nombre = dt.getNombreDT();
+		equipo = dt.getNombreEquipo();
+		pj = torneo.getPartidosJugados(dt).size();
+		g = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 3].size();
+		e = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 1].size();
+		p = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 0].size();
+		goles = torneo.getGolesFavor(dt) + ":" + torneo.getGolesContra(dt);
+		pts = torneo.getPuntos(dt);
 	}
 }
 
 class EstadisticaJugador {
-	int id
-	String nombre
-	int goles
+	int id;
+	String nombre;
+	int goles;
 
-	new(Jugador jugador, Torneo torneo) {
-		id = jugador.id
-		nombre = jugador.nombre
-		goles = torneo.getGoles(jugador)
+	public EstadisticaJugador(Jugador jugador, Torneo torneo) {
+		id = jugador.getId();
+		nombre = jugador.getNombre();
+		goles = torneo.getGoles(jugador);
 	}
 }
 
 class EstadisticaFairPlay {
-	String nombre
-	String equipo
-	int amarillas
-	int rojas
-	int puntos
+	String nombre;
+	String equipo;
+	int amarillas;
+	int rojas;
+	int puntos;
 
-	new(DT dt, Torneo torneo) {
-		nombre = dt.nombreDT
-		equipo = dt.nombreEquipo
-		amarillas = torneo.getAmarillas(dt)
-		rojas = torneo.getRojas(dt)
-		puntos = torneo.getPuntosFairPlay(dt)
+	public EstadisticaFairPlay(DT dt, Torneo torneo) {
+		nombre = dt.getNombreDT();
+		equipo = dt.getNombreEquipo();
+		amarillas = torneo.getAmarillas(dt);
+		rojas = torneo.getRojas(dt);
+		puntos = torneo.getPuntosFairPlay(dt);
 	}
 }
 

@@ -152,5 +152,10 @@ public class DT {
 	public int getTorneosDisponibles() {
 		return torneosDisponibles;
 	}
+
+	public String getNombreEquipo() {
+		// TODO Auto-generated method stub
+		return nombreEquipo;
+	}
 	
 }
