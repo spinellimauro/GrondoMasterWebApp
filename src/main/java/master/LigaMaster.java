@@ -77,13 +77,13 @@ public final class LigaMaster {
 
 	public DT getPropietario(Jugador jugador) {
 		DT libre = new DT("Libre");
-		DT propietario = listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst();
+		DT propietario = listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst().get();
 		
 		if(listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst() == null) {
 			return libre;
 		}else {
 			return propietario;
-		};
+		}
 	}
 
 //	void update() {

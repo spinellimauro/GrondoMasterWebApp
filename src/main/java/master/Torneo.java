@@ -114,46 +114,46 @@ public class Torneo {
 	}
 
 	def int getPuntosFairPlay(DT dt) {
-		getAmarillas(dt) * 4 + getRojas(dt) * 12
+		getAmarillas(dt) * 4 + getRojas(dt) * 12;
 	}
 
 	def List<Partido> getPartidosJugados(DT dt) {
-		listaPartidos.filter[it.terminado].filter[getJugoPartido(dt)].toList
+		listaPartidos.filter[it.terminado].filter[getJugoPartido(dt)].toList;
 	}
 
 	def int getGolesFavor(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesFavor(dt)]
+		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesFavor(dt)];
 	}
 
 	def int getGolesContra(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesContra(dt)]
+		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesContra(dt)];
 	}
 
 	def int getPuntos(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getPuntos(dt)]
+		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getPuntos(dt)];
 	}
 
 	// Estadisticas - Jugador
 	def int getGoles(Jugador jugador) {
-		val listaGoles = listaPartidos.map[golesLocal + golesVisitante].flatten.toList
-		Collections.frequency(listaGoles, jugador)
+		val listaGoles = listaPartidos.map[golesLocal + golesVisitante].flatten.toList;
+		Collections.frequency(listaGoles, jugador);
 	}
 
 	def int getAmarillas(Jugador jugador) {
-		val listaRojas = listaPartidos.map[listaAmarillas].flatten.toList
-		Collections.frequency(listaRojas, jugador)
+		val listaRojas = listaPartidos.map[listaAmarillas].flatten.toList;
+		Collections.frequency(listaRojas, jugador);
 	}
 
 	def int getRojas(Jugador jugador) {
-		val listaRojas = listaPartidos.map[listaRojas].flatten.toList
-		Collections.frequency(listaRojas, jugador)
+		val listaRojas = listaPartidos.map[listaRojas].flatten.toList;
+		Collections.frequency(listaRojas, jugador);
 	}
 
 	def boolean estaSuspendido(Jugador jugador, int fecha) {
-		val fechaAnterior = getFecha(fecha - 1)
+		val fechaAnterior = getFecha(fecha - 1);
 
 		fechaAnterior.exists[fueExpulsado(jugador)] ||
-			( fechaAnterior.exists[fueAmonestado(jugador)] && (getAmarillas(jugador) % limiteAmarillas == 0))
+			( fechaAnterior.exists[fueAmonestado(jugador)] && (getAmarillas(jugador) % limiteAmarillas == 0));
 	}
 
 	public DT getPropietario(Jugador jugador) {
@@ -162,18 +162,18 @@ public class Torneo {
 
 	public void terminarTorneo() {
 		if (terminado)
-			throw new Exception("El torneo ya terminó")
+			throw new Exception("El torneo ya terminó");
 
 		if (listaPartidos.exists[p|!p.terminado])
-			throw new Exception("Hay partidos sin terminar")
+			throw new Exception("Hay partidos sin terminar");
 
 		if (premios.cantPremios > listaParticipantes.size)
-			throw new Exception("Faltan " + (premios.cantPremios - listaParticipantes.size) + " DT más")
+			throw new Exception("Faltan " + (premios.cantPremios - listaParticipantes.size) + " DT más");
 
-		terminado = true
+		terminado = true;
 
 		for (var int i = 0; i < premios.cantPremios; i++)
-			listaPosiciones.get(i).incPlata(premios.getPremio(i + 1))
+			listaPosiciones.get(i).incPlata(premios.getPremio(i + 1));
 	}
 }
 
