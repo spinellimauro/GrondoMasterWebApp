@@ -157,7 +157,7 @@ public class Torneo {
 	}
 
 	public DT getPropietario(Jugador jugador) {
-		listaParticipantes.findFirst[listaJugadores.contains(jugador)]
+		listaParticipantes.findFirst[listaJugadores.contains(jugador)];
 	}
 
 	public void terminarTorneo() {

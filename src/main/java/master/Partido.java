@@ -2,6 +2,8 @@ package master;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 public class Partido {
 			int numeroFecha = 0;
@@ -28,17 +30,15 @@ public class Partido {
 			}
 
 			public int getGoles(Jugador jugador) {
-				Collections.frequency((golesLocal + golesVisitante).toList, jugador);
+				Collections.frequency((golesLocal + golesVisitante).collect(Collectors.toList()), jugador);
 			}
 
 			public void addGol(Jugador jugador) {
 				if(dtLocal.getListaJugadores().contains(jugador)) golesLocal.add(jugador); else golesVisitante.add(jugador);
-				ObservableUtils.firePropertyChanged(this, "score");
 			}
 
 			public void removeGol(Jugador jugador) {
 				if(dtLocal.getListaJugadores().contains(jugador)) golesLocal.remove(jugador); else golesVisitante.remove(jugador);
-				ObservableUtils.firePropertyChanged(this, "score");
 			}
 
 			// Amonestaciones
@@ -68,32 +68,32 @@ public class Partido {
 
 			// Estadisticas - Jugador
 			public int getAmarillas(Jugador jugador) {
-				Collections.frequency(listaAmarillas, jugador);
+				return Collections.frequency(listaAmarillas, jugador);
 			}
 
 			public int getRojas(Jugador jugador) {
-				Collections.frequency(listaRojas, jugador);
+				return Collections.frequency(listaRojas, jugador);
 			}
 
 			// Estadisticas - DT
 			public int getPuntos(DT dt) {
 				if (dt.equals(dtLocal)) {
-					if (golesLocal.size > golesVisitante.size)
-						3
-					else if(golesLocal.size < golesVisitante.size) 0 else 1
+					if (golesLocal.size() > golesVisitante.size())
+						3;
+					else if(golesLocal.size() < golesVisitante.size()) 0; else 1;
 				} else {
-					if (golesLocal.size < golesVisitante.size)
-						3
-					else if(golesLocal.size > golesVisitante.size) 0 else 1
+					if (golesLocal.size() < golesVisitante.size())
+						3;
+					else if(golesLocal.size() > golesVisitante.size()) 0; else 1;
 				}
 			}
 
-			public getGolesFavor(DT dt) {
-				if(dt.equals(dtLocal)) golesLocal.size else golesVisitante.size();
+			public int getGolesFavor(DT dt) {
+				if(dt.equals(dtLocal)) return golesLocal.size(); else return golesVisitante.size();
 			}
 
-			public getGolesContra(DT dt) {
-				if(dt.equals(dtLocal)) golesVisitante.size else golesLocal.size();
+			public int getGolesContra(DT dt) {
+				if(dt.equals(dtLocal)) return golesVisitante.size(); else return golesLocal.size();
 			}
 
 			// Listas
