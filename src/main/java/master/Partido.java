@@ -125,11 +125,11 @@ public class Partido {
 			}
 
 			public double getPremio(DT dt) {
-				if (getPuntos(dt) == 3)
-					torneo.premios.getPremioEvento("Victoria") + torneo.premios.getPremioEvento("Gol") * ( getGolesFavor(dt) - getGolesContra(dt) );
+				if (getPuntos(dt) == 3) 
+					return torneo.premios.getPremioEvento("Victoria") + torneo.premios.getPremioEvento("Gol") * ( getGolesFavor(dt) - getGolesContra(dt) );
 				else if (getPuntos(dt) == 1)
-					torneo.premios.getPremioEvento("Empate");
+					return torneo.premios.getPremioEvento("Empate");
 				else
-					0;
+					return 0;
 			}
 }
