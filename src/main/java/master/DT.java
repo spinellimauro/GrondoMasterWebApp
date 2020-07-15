@@ -67,11 +67,11 @@ public class DT {
 		decPlata(precioSlot);
 	}
 
-	private void incPlata(double monto) {
+	public void incPlata(double monto) {
 		plata += monto;
 	}
 
-	private void decPlata(double monto) {
+	public void decPlata(double monto) {
 		plata -= monto;
 	}
 	
@@ -157,5 +157,19 @@ public class DT {
 		// TODO Auto-generated method stub
 		return nombreEquipo;
 	}
+//	// Comparación
+//	@Override
+//		public equals(Object obj) {
+//			if(obj == null) return false;
+//			if(!DT.isAssignableFrom(obj.class)) return false;
+//
+//			DT otroDT = obj as DT;
+//			nombreDT.equals(otroDT.nombreDT);
+//		}
+//
+//		override hashCode() {
+//			super.hashCode;
+//		}
+//		
 	
 }

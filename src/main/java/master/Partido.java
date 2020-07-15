@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Partido {
 			int numeroFecha = 0;
@@ -26,11 +27,13 @@ public class Partido {
 
 			// Goles
 			public String getScore() {
-				return getGolesLocal().size() + " - " + getGolesVisitante().size();
+				return golesLocal.size() + " - " + golesVisitante.size();
 			}
 
 			public int getGoles(Jugador jugador) {
-				Collections.frequency((golesLocal + golesVisitante).collect(Collectors.toList()), jugador);
+				List<Jugador> goles = Stream.concat(golesLocal.stream(), golesVisitante.stream())
+                        .collect(Collectors.toList());
+				return Collections.frequency(goles.stream().collect(Collectors.toList()), jugador);
 			}
 
 			public void addGol(Jugador jugador) {
@@ -78,13 +81,13 @@ public class Partido {
 			// Estadisticas - DT
 			public int getPuntos(DT dt) {
 				if (dt.equals(dtLocal)) {
-					if (golesLocal.size() > golesVisitante.size())
-						3;
-					else if(golesLocal.size() < golesVisitante.size()) 0; else 1;
+					if (golesLocal.size() > golesVisitante.size()) 
+						return 3;
+					else if(golesLocal.size() < golesVisitante.size()) return 0; else return 1;
 				} else {
 					if (golesLocal.size() < golesVisitante.size())
-						3;
-					else if(golesLocal.size() > golesVisitante.size()) 0; else 1;
+						return 3;
+					else if(golesLocal.size() > golesVisitante.size()) return 0; else return 1;
 				}
 			}
 
@@ -98,28 +101,33 @@ public class Partido {
 
 			// Listas
 			public List<Jugador> getSuspendidos() {
-				(dtLocal.listaJugadores + dtVisitante.listaJugadores).filter[torneo.estaSuspendido(it, numeroFecha)].toList();
+				List<Jugador> listaJugadoresCompleta = Stream.concat(dtLocal.getListaJugadores().stream(), dtVisitante.getListaJugadores().stream())
+                        .collect(Collectors.toList());
+				return listaJugadoresCompleta.stream().filter(jugador -> torneo.estaSuspendido(jugador, numeroFecha)).collect(Collectors.toList());
 			}
 			
 			public List<Jugador> getLesionados() {
-				(dtLocal.listaJugadores + dtVisitante.listaJugadores).filter[estaLesionado].toList();
+				List<Jugador> listaJugadoresCompleta = Stream.concat(dtLocal.getListaJugadores().stream(), dtVisitante.getListaJugadores().stream())
+                        .collect(Collectors.toList());
+				return listaJugadoresCompleta.stream().filter(jugador -> jugador.estaLesionado()).collect(Collectors.toList());
 			}
 
 			// Terminar Partido
-			public void terminarPartido() {
-				if (terminado)
+			public void terminarPartido() throws Exception {
+				if (terminado) {
 					throw new Exception("El partido ya terminó");
+				}
 
 				terminado = true;
-				lesionados.forEach[decLesion];
+				getLesionados().stream().forEach(jugador -> jugador.decLesion());
 				dtLocal.incPlata(getPremio(dtLocal));
 				dtVisitante.incPlata(getPremio(dtVisitante));
 			}
 
 			public double getPremio(DT dt) {
-				if (dt.puntos == 3)
+				if (getPuntos(dt) == 3)
 					torneo.premios.getPremioEvento("Victoria") + torneo.premios.getPremioEvento("Gol") * ( getGolesFavor(dt) - getGolesContra(dt) );
-				else if (dt.puntos == 1)
+				else if (getPuntos(dt) == 1)
 					torneo.premios.getPremioEvento("Empate");
 				else
 					0;
