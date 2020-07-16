@@ -79,15 +79,19 @@ public class Torneo {
 
 	// Estadísticas
 	public List<DT> getListaPosiciones() {
-		listaParticipantes.sortBy(getPuntos(it));
+		Collections.sort(listaParticipantes, (DT dt, DT dt2) -> getPuntos(dt)-getPuntos(dt2));
+//		listaParticipantes.sortBy(getPuntos(it));
 	}
 
 	public List<Jugador> getListaGoleadores() {
-		getListaJugadores().stream().filter(jugador -> getGoles(jugador) != 0).collect(Collectors.toList()).sortBy[getGoles(it)].reverse
+		List<Jugador> goleadores = getListaJugadores().stream().filter(jugador -> getGoles(jugador) != 0).collect(Collectors.toList());
+		Collections.sort(goleadores, (Jugador jugador, Jugador jugador2) -> getGoles(jugador)-getGoles(jugador2));
+		Collections.reverse(goleadores);
 	}
 
 	public List<DT> getListaFairPlay() {
-		listaParticipantes.sortBy[getPuntosFairPlay(it)]
+		Collections.sort(listaParticipantes, (DT dt, DT dt2) -> getPuntosFairPlay(dt)-getPuntosFairPlay(dt2));
+//		listaParticipantes.sortBy(getPuntosFairPlay(dt)); 
 	}
 
 	public List<EstadisticaTorneo> getTablaPosiciones() {
@@ -104,11 +108,11 @@ public class Torneo {
 
 	// Estadisticas - DT
 	public int getAmarillas(DT dt) {
-		return dt.listaJugadores.fold(0)[acum, jugador|acum + getAmarillas(jugador)];
+		return dt.getListaJugadores().stream().reduce(0, (acum, jugador) -> acum + getAmarillas(jugador), Integer::sum);
 	}
 
 	public int getRojas(DT dt) {
-		return dt.listaJugadores.fold(0)[acum, jugador|acum + getRojas(jugador)];
+		return dt.getListaJugadores().stream().reduce(0, (acum, jugador) -> acum + getRojas(jugador), Integer::sum);
 	}
 
 	public int getPuntosFairPlay(DT dt) {
@@ -120,16 +124,19 @@ public class Torneo {
 		partidosTerminados.stream().filter(partido -> partido.getJugoPartido(dt)).collect(Collectors.toList());
 	}
 
-	def int getGolesFavor(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesFavor(dt)];
+	public int getGolesFavor(DT dt) {
+		return getPartidosJugados(dt).stream().reduce(0, (acum, partido) -> acum + partido.getGolesFavor(dt), Integer::sum);
+//		users.stream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge());
+
+//		fold(0)[acum, partido|acum + partido.getGolesFavor(dt)];
 	}
 
-	def int getGolesContra(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getGolesContra(dt)];
+	public int getGolesContra(DT dt) {
+		return getPartidosJugados(dt).stream().reduce(0, (acum, partido) -> acum + partido.getGolesContra(dt), Integer::sum);
 	}
 
-	def int getPuntos(DT dt) {
-		getPartidosJugados(dt).fold(0)[acum, partido|acum + partido.getPuntos(dt)];
+	public int getPuntos(DT dt) {
+		return getPartidosJugados(dt).stream().reduce(0, (acum, partido) -> acum + partido.getPuntos(dt), Integer::sum);
 	}
 
 	// Estadisticas - Jugador
