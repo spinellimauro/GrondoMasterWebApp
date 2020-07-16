@@ -91,15 +91,15 @@ public class Torneo {
 	}
 
 	public List<EstadisticaTorneo> getTablaPosiciones() {
-		listaPosiciones.map[new EstadisticaTorneo(it, this)]
+		return getListaPosiciones().stream().map(dt -> new EstadisticaTorneo(dt, this)).collect(Collectors.toList());
 	}
 
 	public List<EstadisticaFairPlay> getTablaFairPlay() {
-		listaFairPlay.map[new EstadisticaFairPlay(it, this)]
+		return getListaFairPlay().stream().map(dt -> new EstadisticaFairPlay(dt, this)).collect(Collectors.toList());
 	}
 
 	public List<EstadisticaJugador> getTablaGoleadores() {
-		return getListaGoleadores().stream().map(jugador -> new EstadisticaJugador(jugador, this));
+		return getListaGoleadores().stream().map(jugador -> new EstadisticaJugador(jugador, this)).collect(Collectors.toList());
 	}
 
 	// Estadisticas - DT
@@ -144,14 +144,14 @@ public class Torneo {
 	}
 
 	public int getRojas(Jugador jugador) {
-		val listaRojas = listaPartidos.map[listaRojas].flatten.toList;
+		List<Jugador> listaRojas = listaPartidos.stream().map(partido -> partido.listaRojas).flatten.toList;
 		Collections.frequency(listaRojas, jugador);
 	}
 
 	public boolean estaSuspendido(Jugador jugador, int fecha) {
-		Partido fechaAnterior = getFecha(fecha - 1);
+		List<Partido> fechaAnterior = getFecha(fecha - 1);
 
-		fechaAnterior.stream().anyMatch(partido -> partido.fueExpulsado(jugador)) ||
+		return fechaAnterior.stream().anyMatch(partido -> partido.fueExpulsado(jugador)) ||
 			( fechaAnterior.stream().anyMatch(partido -> partido.fueAmonestado(jugador)) && (getAmarillas(jugador) % limiteAmarillas == 0));
 	}
 
