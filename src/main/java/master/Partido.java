@@ -132,4 +132,8 @@ public class Partido {
 				else
 					return 0;
 			}
+
+			public boolean getTerminado() {
+				return terminado;
+			}
 }

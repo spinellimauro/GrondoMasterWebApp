@@ -35,7 +35,7 @@ public final class LigaMaster {
 		return listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
 	}
 
-	public List<DT> getDTsQuePagan() {
+	public Set<DT> getDTsQuePagan() {
 		return listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
 	}
 

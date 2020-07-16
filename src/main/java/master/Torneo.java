@@ -82,43 +82,42 @@ public class Torneo {
 		listaParticipantes.sortBy(getPuntos(it));
 	}
 
-	@JsonIgnore
-	def List<Jugador> getListaGoleadores() {
-		listaJugadores.filter[getGoles(it) != 0].sortBy[getGoles(it)].reverse
+	public List<Jugador> getListaGoleadores() {
+		getListaJugadores().stream().filter(jugador -> getGoles(jugador) != 0).collect(Collectors.toList()).sortBy[getGoles(it)].reverse
 	}
 
-	@JsonIgnore
-	def List<DT> getListaFairPlay() {
+	public List<DT> getListaFairPlay() {
 		listaParticipantes.sortBy[getPuntosFairPlay(it)]
 	}
 
-	def List<EstadisticaTorneo> getTablaPosiciones() {
+	public List<EstadisticaTorneo> getTablaPosiciones() {
 		listaPosiciones.map[new EstadisticaTorneo(it, this)]
 	}
 
-	def List<EstadisticaFairPlay> getTablaFairPlay() {
+	public List<EstadisticaFairPlay> getTablaFairPlay() {
 		listaFairPlay.map[new EstadisticaFairPlay(it, this)]
 	}
 
-	def List<EstadisticaJugador> getTablaGoleadores() {
-		listaGoleadores.map[new EstadisticaJugador(it, this)]
+	public List<EstadisticaJugador> getTablaGoleadores() {
+		return getListaGoleadores().stream().map(jugador -> new EstadisticaJugador(jugador, this));
 	}
 
 	// Estadisticas - DT
-	def int getAmarillas(DT dt) {
-		dt.listaJugadores.fold(0)[acum, jugador|acum + getAmarillas(jugador)]
+	public int getAmarillas(DT dt) {
+		return dt.listaJugadores.fold(0)[acum, jugador|acum + getAmarillas(jugador)];
 	}
 
-	def int getRojas(DT dt) {
-		dt.listaJugadores.fold(0)[acum, jugador|acum + getRojas(jugador)]
+	public int getRojas(DT dt) {
+		return dt.listaJugadores.fold(0)[acum, jugador|acum + getRojas(jugador)];
 	}
 
-	def int getPuntosFairPlay(DT dt) {
-		getAmarillas(dt) * 4 + getRojas(dt) * 12;
+	public int getPuntosFairPlay(DT dt) {
+		return getAmarillas(dt) * 4 + getRojas(dt) * 12;
 	}
 
-	def List<Partido> getPartidosJugados(DT dt) {
-		listaPartidos.filter[it.terminado].filter[getJugoPartido(dt)].toList;
+	public List<Partido> getPartidosJugados(DT dt) {
+		List<Partido> partidosTerminados = listaPartidos.stream().filter(partido -> partido.getTerminado()).collect(Collectors.toList());
+		partidosTerminados.stream().filter(partido -> partido.getJugoPartido(dt)).collect(Collectors.toList());
 	}
 
 	def int getGolesFavor(DT dt) {
@@ -134,46 +133,46 @@ public class Torneo {
 	}
 
 	// Estadisticas - Jugador
-	def int getGoles(Jugador jugador) {
+	public int getGoles(Jugador jugador) {
 		val listaGoles = listaPartidos.map[golesLocal + golesVisitante].flatten.toList;
 		Collections.frequency(listaGoles, jugador);
 	}
 
-	def int getAmarillas(Jugador jugador) {
+	public int getAmarillas(Jugador jugador) {
 		val listaRojas = listaPartidos.map[listaAmarillas].flatten.toList;
 		Collections.frequency(listaRojas, jugador);
 	}
 
-	def int getRojas(Jugador jugador) {
+	public int getRojas(Jugador jugador) {
 		val listaRojas = listaPartidos.map[listaRojas].flatten.toList;
 		Collections.frequency(listaRojas, jugador);
 	}
 
-	def boolean estaSuspendido(Jugador jugador, int fecha) {
-		val fechaAnterior = getFecha(fecha - 1);
+	public boolean estaSuspendido(Jugador jugador, int fecha) {
+		Partido fechaAnterior = getFecha(fecha - 1);
 
-		fechaAnterior.exists[fueExpulsado(jugador)] ||
-			( fechaAnterior.exists[fueAmonestado(jugador)] && (getAmarillas(jugador) % limiteAmarillas == 0));
+		fechaAnterior.stream().anyMatch(partido -> partido.fueExpulsado(jugador)) ||
+			( fechaAnterior.stream().anyMatch(partido -> partido.fueAmonestado(jugador)) && (getAmarillas(jugador) % limiteAmarillas == 0));
 	}
 
 	public DT getPropietario(Jugador jugador) {
-		listaParticipantes.findFirst[listaJugadores.contains(jugador)];
+		listaParticipantes.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst();
 	}
 
 	public void terminarTorneo() {
 		if (terminado)
 			throw new Exception("El torneo ya terminó");
 
-		if (listaPartidos.exists[p|!p.terminado])
+		if (listaPartidos.stream().anyMatch(partido -> partido.getTerminado()));
 			throw new Exception("Hay partidos sin terminar");
 
-		if (premios.cantPremios > listaParticipantes.size)
-			throw new Exception("Faltan " + (premios.cantPremios - listaParticipantes.size) + " DT más");
+		if (premios.getCantPremios() > listaParticipantes.size())
+			throw new Exception("Faltan " + (premios.getCantPremios() - listaParticipantes.size()) + " DT más");
 
 		terminado = true;
 
-		for (var int i = 0; i < premios.cantPremios; i++)
-			listaPosiciones.get(i).incPlata(premios.getPremio(i + 1));
+		for (int i = 0; i < premios.getCantPremios(); i++)
+			getListaPosiciones().get(i).incPlata(premios.getPremio(i + 1));
 	}
 }
 
@@ -191,9 +190,9 @@ class EstadisticaTorneo {
 		nombre = dt.getNombreDT();
 		equipo = dt.getNombreEquipo();
 		pj = torneo.getPartidosJugados(dt).size();
-		g = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 3].size();
-		e = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 1].size();
-		p = torneo.getPartidosJugados(dt).filter[getPuntos(dt) == 0].size();
+		g = torneo.getPartidosJugados(dt).stream().filter(partido -> partido.getPuntos(dt) == 3).collect(Collectors.toList()).size();
+		e = torneo.getPartidosJugados(dt).stream().filter(partido -> partido.getPuntos(dt) == 1).collect(Collectors.toList()).size();
+		p = torneo.getPartidosJugados(dt).stream().filter(partido -> partido.getPuntos(dt) == 0).collect(Collectors.toList()).size();
 		goles = torneo.getGolesFavor(dt) + ":" + torneo.getGolesContra(dt);
 		pts = torneo.getPuntos(dt);
 	}
