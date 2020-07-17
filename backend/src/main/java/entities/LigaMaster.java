@@ -32,7 +32,7 @@ public final class LigaMaster {
 	}
 
 	public List<Jugador> getListaJugador() {
-		return listaDT.stream().map(dt -> dt.getListaJugadores());
+		return listaDT.stream().flatMap(dt -> dt.getListaJugadores().stream()).collect(Collectors.toList());
 	}
 
 	public Set<DT> getDTsQuePagan() {
