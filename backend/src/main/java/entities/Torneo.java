@@ -67,7 +67,11 @@ public class Torneo {
 	}
 
 	public List<Integer> getListaFechas() {
-		(1 .. numeroFechas).toList;
+		List<Integer> fechas = Arrays.asList();
+		for(int i=1;i<=getNumeroFechas();i++) {
+			fechas.add(i);
+		}
+		return fechas;
 	}
 
 	public List<Partido> getFecha(int entero) {
@@ -143,7 +147,7 @@ public class Torneo {
 
 	// Estadisticas - Jugador
 	public int getGoles(Jugador jugador) { //Agregar adentro en el + el merge de ambas listas
-		List<Jugador> listaGoles = listaPartidos.stream().flatMap(partido -> (Stream.concat(partido.getGolesVisitante().stream(),partido.getGolesLocal().stream())).collect(Collectors.toList());
+		List<Jugador> listaGoles = listaPartidos.stream().flatMap(partido -> (Stream.concat(partido.getGolesVisitante().stream(),partido.getGolesLocal().stream()))).collect(Collectors.toList());
 		return Collections.frequency(listaGoles, jugador);
 	}
 
@@ -169,11 +173,11 @@ public class Torneo {
 	}
 
 	public void terminarTorneo() throws Exception {
-		if (terminado)
+		if (terminado) 
 			throw new Exception("El torneo ya termin�");
-
-		if (listaPartidos.stream().anyMatch(partido -> partido.getTerminado()));
-			throw new Exception("Hay partidos sin terminar");
+		
+		if (listaPartidos.stream().anyMatch(partido -> partido.getTerminado()))
+			throw new Exception("Hay partidos sin terminar");	
 
 		if (premios.getCantPremios() > listaParticipantes.size())
 			throw new Exception("Faltan " + (premios.getCantPremios() - listaParticipantes.size()) + " DT m�s");
