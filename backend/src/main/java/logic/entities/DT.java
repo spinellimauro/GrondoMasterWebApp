@@ -1,6 +1,4 @@
-package entities;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package logic.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -132,7 +130,7 @@ public class DT {
 		}
 //		jugadoresAPagar.forEach[pagarImpuesto]
 
-		List<Jugador> jugadoresNoPagados = Arrays.asList(); 
+		List<Jugador> jugadoresNoPagados = new ArrayList<Jugador>();
 		jugadoresNoPagados.addAll(getJugadoresConImpuesto());
 		jugadoresNoPagados.removeAll(jugadoresAPagar);
 		for (Jugador jugador : jugadoresNoPagados) {

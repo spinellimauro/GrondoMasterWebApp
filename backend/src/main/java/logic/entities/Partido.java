@@ -1,5 +1,6 @@
-package entities;
+package logic.entities;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Collections;
@@ -12,10 +13,10 @@ public class Partido {
 			DT dtVisitante;
 			boolean terminado = false;
 			Torneo torneo;
-			List<Jugador> golesLocal = Arrays.asList();
-			List<Jugador> golesVisitante = Arrays.asList();
-			List<Jugador> listaAmarillas = Arrays.asList();
-			List<Jugador> listaRojas = Arrays.asList();
+			List<Jugador> golesLocal = new ArrayList<Jugador>();
+			List<Jugador> golesVisitante = new ArrayList<Jugador>();
+			List<Jugador> listaAmarillas = new ArrayList<Jugador>();
+			List<Jugador> listaRojas = new ArrayList<Jugador>();
 			
 			public int getNumeroFecha() {
 				return numeroFecha;

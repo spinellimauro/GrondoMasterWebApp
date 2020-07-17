@@ -1,4 +1,4 @@
-package entities;
+package logic.entities;
 
 import javax.persistence.*;
 

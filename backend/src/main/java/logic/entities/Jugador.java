@@ -1,4 +1,4 @@
-package entities;
+package logic.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "jugador")
-class Jugador {
+public class Jugador {
 
 	Jugador() {
 		habilitado = true;
