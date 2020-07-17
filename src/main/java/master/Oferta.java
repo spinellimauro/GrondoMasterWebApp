@@ -20,7 +20,7 @@ public class Oferta {
 				dtReceptor.comprarJugador(jugador, 0);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//
 			}
 		});
 		
@@ -29,7 +29,7 @@ public class Oferta {
 				dtOfertante.venderJugador(jugador, 0);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//
 			}
 		});
 	
