@@ -31,8 +31,8 @@ public final class LigaMaster {
 		return new DT("Master","ARG123");
 	}
 
-	public Set<Jugador> getListaJugador() {
-		return listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
+	public List<Jugador> getListaJugador() {
+		return listaDT.stream().map(dt -> dt.getListaJugadores());
 	}
 
 	public Set<DT> getDTsQuePagan() {
