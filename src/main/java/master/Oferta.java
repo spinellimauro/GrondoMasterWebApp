@@ -15,8 +15,23 @@ public class Oferta {
 		dtOfertante.comprarJugador(jugadorOfertado,monto);
 		dtReceptor.venderJugador(jugadorOfertado,monto);
 
-		jugadoresOfrecidos.stream().forEach(jugador -> dtReceptor.comprarJugador(jugador, 0));
-		jugadoresOfrecidos.stream().forEach(jugador -> dtOfertante.venderJugador(jugador, 0));
+		jugadoresOfrecidos.stream().forEach(jugador -> {
+			try {
+				dtReceptor.comprarJugador(jugador, 0);
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
+		
+		jugadoresOfrecidos.stream().forEach(jugador -> {
+			try {
+				dtOfertante.venderJugador(jugador, 0);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 	
 		LigaMaster.getInstance().mercado.listaOfertas.removeAll(LigaMaster.getInstance().mercado.getOfertasRecibidas(jugadorOfertado));
 	}
