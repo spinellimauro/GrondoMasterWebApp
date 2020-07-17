@@ -146,11 +146,11 @@ public class Partido {
 				return listaAmarillas;
 			}
 
-			public List<DT> getGolesVisitante() {
+			public List<Jugador> getGolesVisitante() {
 				return golesVisitante;
 			}
 
-			public List<DT> getGolesLocal() {
+			public List<Jugador> getGolesLocal() {
 				return golesLocal;
 			}
 

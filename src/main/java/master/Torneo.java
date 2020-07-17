@@ -144,7 +144,7 @@ public class Torneo {
 
 	// Estadisticas - Jugador
 	public int getGoles(Jugador jugador) { //Agregar adentro en el + el merge de ambas listas
-		List<Jugador> listaGoles = listaPartidos.stream().flatMap(partido -> (Stream.concat(partido.getGolesVisitante().stream(),partido.getGolesLocal().stream()))).collect(Collectors.toList());
+		List<Jugador> listaGoles = listaPartidos.stream().flatMap(partido -> (Stream.concat(partido.getGolesVisitante().stream(),partido.getGolesLocal().stream())).collect(Collectors.toList());
 		return Collections.frequency(listaGoles, jugador);
 	}
 
