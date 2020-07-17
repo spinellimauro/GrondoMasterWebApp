@@ -1,9 +1,11 @@
 package master;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Torneo {
 	String nombreTorneo = "";
@@ -70,28 +72,29 @@ public class Torneo {
 	}
 
 	public List<Partido> getFecha(int entero) {
-		listaPartidos.stream().filter(partido -> partido.getNumeroFecha() == entero).collect(Collectors.toList());
+		return listaPartidos.stream().filter(partido -> partido.getNumeroFecha() == entero).collect(Collectors.toList());
 	}
 	
 	public List<Jugador> getListaJugadores() {
-		return listaParticipantes.stream().flatMap(dt -> dt.getListaJugadores()).collect(Collectors.toList());
+		return listaParticipantes.stream().flatMap(dt -> dt.getListaJugadores().stream()).collect(Collectors.toList());
 	}
 
 	// Estadísticas
 	public List<DT> getListaPosiciones() {
 		Collections.sort(listaParticipantes, (DT dt, DT dt2) -> getPuntos(dt)-getPuntos(dt2));
-//		listaParticipantes.sortBy(getPuntos(it));
+		return listaParticipantes;
 	}
 
 	public List<Jugador> getListaGoleadores() {
 		List<Jugador> goleadores = getListaJugadores().stream().filter(jugador -> getGoles(jugador) != 0).collect(Collectors.toList());
 		Collections.sort(goleadores, (Jugador jugador, Jugador jugador2) -> getGoles(jugador)-getGoles(jugador2));
 		Collections.reverse(goleadores);
+		return goleadores;
 	}
 
 	public List<DT> getListaFairPlay() {
 		Collections.sort(listaParticipantes, (DT dt, DT dt2) -> getPuntosFairPlay(dt)-getPuntosFairPlay(dt2));
-//		listaParticipantes.sortBy(getPuntosFairPlay(dt)); 
+		return listaParticipantes;
 	}
 
 	public List<EstadisticaTorneo> getTablaPosiciones() {
@@ -121,7 +124,7 @@ public class Torneo {
 
 	public List<Partido> getPartidosJugados(DT dt) {
 		List<Partido> partidosTerminados = listaPartidos.stream().filter(partido -> partido.getTerminado()).collect(Collectors.toList());
-		partidosTerminados.stream().filter(partido -> partido.getJugoPartido(dt)).collect(Collectors.toList());
+		return partidosTerminados.stream().filter(partido -> partido.getJugoPartido(dt)).collect(Collectors.toList());
 	}
 
 	public int getGolesFavor(DT dt) {
@@ -140,19 +143,19 @@ public class Torneo {
 	}
 
 	// Estadisticas - Jugador
-	public int getGoles(Jugador jugador) {
-		val listaGoles = listaPartidos.map[golesLocal + golesVisitante].flatten.toList;
-		Collections.frequency(listaGoles, jugador);
+	public int getGoles(Jugador jugador) { //Agregar adentro en el + el merge de ambas listas
+		List<Jugador> listaGoles = listaPartidos.stream().flatMap(partido -> (Stream.concat(partido.getGolesVisitante().stream(),partido.getGolesLocal().stream()))).collect(Collectors.toList());
+		return Collections.frequency(listaGoles, jugador);
 	}
 
 	public int getAmarillas(Jugador jugador) {
-		val listaRojas = listaPartidos.map[listaAmarillas].flatten.toList;
-		Collections.frequency(listaRojas, jugador);
+		List<Jugador> listaRojas = listaPartidos.stream().flatMap(partido -> partido.getListaAmarillas().stream()).collect(Collectors.toList());
+		return Collections.frequency(listaRojas, jugador);
 	}
 
 	public int getRojas(Jugador jugador) {
-		List<Jugador> listaRojas = listaPartidos.stream().map(partido -> partido.listaRojas).flatten.toList;
-		Collections.frequency(listaRojas, jugador);
+		List<Jugador> listaRojas = listaPartidos.stream().flatMap(partido -> partido.getListaRojas().stream()).collect(Collectors.toList());
+		return Collections.frequency(listaRojas, jugador);
 	}
 
 	public boolean estaSuspendido(Jugador jugador, int fecha) {
@@ -163,10 +166,10 @@ public class Torneo {
 	}
 
 	public DT getPropietario(Jugador jugador) {
-		listaParticipantes.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst();
+		return listaParticipantes.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst().get();
 	}
 
-	public void terminarTorneo() {
+	public void terminarTorneo() throws Exception {
 		if (terminado)
 			throw new Exception("El torneo ya terminó");
 
@@ -180,6 +183,11 @@ public class Torneo {
 
 		for (int i = 0; i < premios.getCantPremios(); i++)
 			getListaPosiciones().get(i).incPlata(premios.getPremio(i + 1));
+	}
+
+
+	public List<Partido> getListaPartidos() {
+		return listaPartidos;
 	}
 }
 

@@ -1,6 +1,7 @@
 package master;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -136,4 +137,21 @@ public class Partido {
 			public boolean getTerminado() {
 				return terminado;
 			}
+
+			public List<Jugador> getListaRojas() {
+				return listaRojas;
+			}
+
+			public List<Jugador> getListaAmarillas() {
+				return listaAmarillas;
+			}
+
+			public List<DT> getGolesVisitante() {
+				return golesVisitante;
+			}
+
+			public List<DT> getGolesLocal() {
+				return golesLocal;
+			}
+
 }

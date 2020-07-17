@@ -39,8 +39,10 @@ public final class LigaMaster {
 		return listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
 	}
 
-	public List<Jugador> getListaTransferibles() {
-//		listaDT.stream().map(getListaJugador()).flatten.filter[precioVenta > 0].toSet    //TODO: VER COMO HACER ESTA PARTE (NUEVA FORMA)
+	public Set<Jugador> getListaTransferibles() {
+		List<Jugador> jugadores = listaDT.stream().flatMap(dt -> getListaJugador().stream()).collect(Collectors.toList());
+		return jugadores.stream().filter(jugador -> jugador.getPrecioVenta() > 0).collect(Collectors.toSet());
+//		.filter[precioVenta > 0].toSet
 	}
 
 //	private void leerBase() {
@@ -92,7 +94,8 @@ public final class LigaMaster {
 
 	// Cálculo del Historial //TODO: Ver bien despues.
 	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
-//		listaTorneos.stream().map(torneo -> torneo.getListaPartidos()).flatten.filter[getJugoPartido(dt) && getJugoPartido(otroDT) && terminado].toList
+		List<Partido> partidos = listaTorneos.stream().flatMap(torneo -> torneo.getListaPartidos().stream()).collect(Collectors.toList());
+		return partidos.stream().filter(partido -> partido.getJugoPartido(dt) && partido.getJugoPartido(otroDT) && partido.getTerminado()).collect(Collectors.toList());
 	}
 
 	public int getPartidosGanados(DT dt, DT otroDT) {

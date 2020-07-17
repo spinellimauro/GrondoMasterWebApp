@@ -105,4 +105,8 @@ class Jugador {
 		return id;
 	}
 
+	public double getPrecioVenta() {
+		return precioVenta;
+	}
+
 }
