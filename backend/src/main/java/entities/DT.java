@@ -1,19 +1,40 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Entity
+@Table(name = "dt")
 public class DT {
-	
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column(name = "nombre_equipo")
 	private String nombreEquipo;
-	private List<Jugador> newArrayList;
-	private List<Jugador> listaJugadores = newArrayList;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "jugador_id")
+	private List<Jugador> listaJugadores;
+
+	@Column(name = "nombre")
 	private String nombreDT;
+
 	private String password;
+
+	@Column(name = "dinero")
 	private double plata = 0.0;
+
+	@Column(name = "torneos_disponibles")
 	private int torneosDisponibles = 3;
+
 	private int slots = 30;
 
 	public DT(String _nombreDT, String _password){
@@ -157,7 +178,56 @@ public class DT {
 		// TODO Auto-generated method stub
 		return nombreEquipo;
 	}
-//	// Comparaci�n
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNombreEquipo(String nombreEquipo) {
+		this.nombreEquipo = nombreEquipo;
+	}
+
+	public void setListaJugadores(List<Jugador> listaJugadores) {
+		this.listaJugadores = listaJugadores;
+	}
+
+	public void setNombreDT(String nombreDT) {
+		this.nombreDT = nombreDT;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public double getPlata() {
+		return plata;
+	}
+
+	public void setPlata(double plata) {
+		this.plata = plata;
+	}
+
+	public void setTorneosDisponibles(int torneosDisponibles) {
+		this.torneosDisponibles = torneosDisponibles;
+	}
+
+	public int getSlots() {
+		return slots;
+	}
+
+	public void setSlots(int slots) {
+		this.slots = slots;
+	}
+
+	//	// Comparación
 //	@Override
 //		public equals(Object obj) {
 //			if(obj == null) return false;

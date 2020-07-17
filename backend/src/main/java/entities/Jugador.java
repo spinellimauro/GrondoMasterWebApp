@@ -1,23 +1,49 @@
 package entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "jugador")
 class Jugador {
+
+	Jugador() {
+		habilitado = true;
+	}
 	
 	// Info SoFIFA
-	private int id = 0;
-	private String nombre = "";
-	private String nacionalidad = "";
-	private List<String> newArrayList;
-	private List<String> posiciones = newArrayList;
-	private int nivel = 0;
-	private int potencial = 0;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	private String nombre;
+
+	private String nacionalidad;
+
+	@ManyToMany(fetch = FetchType.EAGER, targetEntity = Posicion.class)
+	@JoinTable(name = "jugador_posicion", joinColumns = { @JoinColumn(name = "jugador_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "posicion_id", referencedColumnName = "id")})
+	private List<String> posiciones;
+
+	private int nivel;
+	private int potencial;
 	
 	// Info GrondoMaster
-	private int lesion = 0;
-	private boolean habilitado = true;
-	private double precioVenta = 0;
-	private int vecesNoPagadas = 0;
+	private int lesion;
+	private boolean habilitado;
+
+	@Column(name = "precio_venta")
+	private double precioVenta;
+
+	@Column(name = "cantidad_no_pagada")
+	private int vecesNoPagadas;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "dt_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	DT dt;
 
 	// Impuestos
 	
@@ -109,4 +135,71 @@ class Jugador {
 		return precioVenta;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getNacionalidad() {
+		return nacionalidad;
+	}
+
+	public void setNacionalidad(String nacionalidad) {
+		this.nacionalidad = nacionalidad;
+	}
+
+	public List<String> getPosiciones() {
+		return posiciones;
+	}
+
+	public void setPosiciones(List<String> posiciones) {
+		this.posiciones = posiciones;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
+
+	public int getPotencial() {
+		return potencial;
+	}
+
+	public void setPotencial(int potencial) {
+		this.potencial = potencial;
+	}
+
+	public int getLesion() {
+		return lesion;
+	}
+
+	public void setLesion(int lesion) {
+		this.lesion = lesion;
+	}
+
+	public boolean isHabilitado() {
+		return habilitado;
+	}
+
+	public void setHabilitado(boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+
+	public void setPrecioVenta(double precioVenta) {
+		this.precioVenta = precioVenta;
+	}
+
+	public void setVecesNoPagadas(int vecesNoPagadas) {
+		this.vecesNoPagadas = vecesNoPagadas;
+	}
+
+	public DT getDt() {
+		return dt;
+	}
+
+	public void setDt(DT dt) {
+		this.dt = dt;
+	}
 }
