@@ -1,7 +1,6 @@
-package master;
+package entities;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -116,7 +115,7 @@ public class Partido {
 			// Terminar Partido
 			public void terminarPartido() throws Exception {
 				if (terminado) {
-					throw new Exception("El partido ya terminó");
+					throw new Exception("El partido ya terminï¿½");
 				}
 
 				terminado = true;

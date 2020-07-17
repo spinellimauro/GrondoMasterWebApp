@@ -1,0 +1,59 @@
+server:
+  port: 9000
+  servlet:
+    context-path:
+
+# Actuator / Management
+management:
+  server:
+    port: 8081
+    servlet:
+      context-path: /management
+
+# JACKSON
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/grondomaster?zeroDateTimeBehavior=convertToNull
+    username: admin
+    password: prueba
+    platform: MYSQL
+    #initialize: true
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    generate-ddl: true
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL5Dialect
+      hibernate.format_sql: true
+      hibernate.search.default.directory_provider: filesystem
+      hibernate.search.default.indexBase: target/lucene/indexes/
+      spring.jpa.hibernate.use-new-id-generator-mappings: true
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 1024Mb
+      max-request-size: 2048Mb
+      max-file-size: 100Mb
+
+app:
+  jwt:
+    header: Authorization
+    secret: mySecret
+    expiration: 86400
+    route:
+      authentication:
+        path: api/auth
+        user: user
+        login: login
+        logout: logout
+        refresh: refresh
+        impersonate: impersonate

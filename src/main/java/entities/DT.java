@@ -1,4 +1,4 @@
-package master;
+package entities;
 
 import java.util.Arrays;
 import java.util.List;
@@ -35,7 +35,7 @@ public class DT {
 
 	public void comprarJugador(Jugador jugador, double precio) throws Exception {
 		if (plata < precio)
-			throw new Exception("No tenés suficiente plata");
+			throw new Exception("No tenï¿½s suficiente plata");
 
 		if (getCantJugadores() == slots)
 			throw new Exception("No hay slots disponibles");
@@ -61,7 +61,7 @@ public class DT {
 		double precioSlot = Precios.getInstance().getPrecio("Slot");
 
 		if (plata < precioSlot)
-			throw new Exception("No tenés suficiente plata");
+			throw new Exception("No tenï¿½s suficiente plata");
 
 		slots++;
 		decPlata(precioSlot);
@@ -81,7 +81,7 @@ public class DT {
 			plata -= monto;
 		}
 		else{
-		throw new Exception("No tenés suficiente plata");
+		throw new Exception("No tenï¿½s suficiente plata");
 		}
 	}
 	
@@ -157,7 +157,7 @@ public class DT {
 		// TODO Auto-generated method stub
 		return nombreEquipo;
 	}
-//	// Comparación
+//	// Comparaciï¿½n
 //	@Override
 //		public equals(Object obj) {
 //			if(obj == null) return false;

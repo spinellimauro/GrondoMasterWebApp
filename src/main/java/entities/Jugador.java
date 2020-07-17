@@ -1,4 +1,4 @@
-package master;
+package entities;
 
 import java.util.List;
 

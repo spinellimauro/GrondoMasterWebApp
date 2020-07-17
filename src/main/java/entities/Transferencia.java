@@ -1,4 +1,4 @@
-package master;
+package entities;
 
 public class Transferencia {
 	String dtCompra;

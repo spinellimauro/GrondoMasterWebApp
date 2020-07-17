@@ -1,4 +1,4 @@
-package master;
+package entities;
 
 import java.util.Arrays;
 import java.util.List;
@@ -59,10 +59,10 @@ public final class LigaMaster {
 
 	void addDT(DT dt) throws Exception {
 		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
-			throw new Exception("Ese nombre de DT ya está en uso");
+			throw new Exception("Ese nombre de DT ya estï¿½ en uso");
 
 		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
-			throw new Exception("Ese nombre de Equipo ya está en uso");
+			throw new Exception("Ese nombre de Equipo ya estï¿½ en uso");
 
 		listaDT.add(dt);
 	}
@@ -92,7 +92,7 @@ public final class LigaMaster {
 //		listaJugador.forEach[update]
 //	}
 
-	// Cálculo del Historial //TODO: Ver bien despues.
+	// Cï¿½lculo del Historial //TODO: Ver bien despues.
 	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
 		List<Partido> partidos = listaTorneos.stream().flatMap(torneo -> torneo.getListaPartidos().stream()).collect(Collectors.toList());
 		return partidos.stream().filter(partido -> partido.getJugoPartido(dt) && partido.getJugoPartido(otroDT) && partido.getTerminado()).collect(Collectors.toList());

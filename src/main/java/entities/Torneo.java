@@ -1,7 +1,6 @@
-package master;
+package entities;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Collections;
 import java.util.stream.Collectors;
@@ -79,7 +78,7 @@ public class Torneo {
 		return listaParticipantes.stream().flatMap(dt -> dt.getListaJugadores().stream()).collect(Collectors.toList());
 	}
 
-	// Estadísticas
+	// Estadï¿½sticas
 	public List<DT> getListaPosiciones() {
 		Collections.sort(listaParticipantes, (DT dt, DT dt2) -> getPuntos(dt)-getPuntos(dt2));
 		return listaParticipantes;
@@ -171,13 +170,13 @@ public class Torneo {
 
 	public void terminarTorneo() throws Exception {
 		if (terminado)
-			throw new Exception("El torneo ya terminó");
+			throw new Exception("El torneo ya terminï¿½");
 
 		if (listaPartidos.stream().anyMatch(partido -> partido.getTerminado()));
 			throw new Exception("Hay partidos sin terminar");
 
 		if (premios.getCantPremios() > listaParticipantes.size())
-			throw new Exception("Faltan " + (premios.getCantPremios() - listaParticipantes.size()) + " DT más");
+			throw new Exception("Faltan " + (premios.getCantPremios() - listaParticipantes.size()) + " DT mï¿½s");
 
 		terminado = true;
 
