@@ -7,29 +7,29 @@
     <session-factory>
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/grondomaster?zeroDateTimeBehavior=convertToNull</property>
-        <property name="connection.username">gabriel</property>
-        <property name="connection.password">test1234</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/grondomaster?serverTimezone=UTC</property>
+        <property name="connection.username">spinelli</property>
+        <property name="connection.password">ARGarg12</property>
 
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
         <!-- Enable Hibernate's automatic session context management -->
         <property name="current_session_context_class">thread</property>
 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hbm2ddl.auto">update</property>
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="entities.Posicion" />
-        <mapping class="entities.DT" />
-        <mapping class="entities.jugador" />
-        <mapping class="entities.Transferencia" />
+        <mapping class="logic.entities.Posicion" />
+        <mapping class="logic.entities.DT" />
+        <mapping class="logic.entities.Jugador" />
+        <mapping class="logic.entities.Transferencia" />
 
     </session-factory>
 
