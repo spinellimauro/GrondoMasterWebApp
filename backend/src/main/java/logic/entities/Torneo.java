@@ -41,7 +41,8 @@ public class Torneo {
 	@JoinColumn(name = "partido_id")
 	List<Partido> listaPartidos = Arrays.asList();
 	
-	PremiosTorneos premios = new PremiosTorneos();
+	
+//	PremiosTorneos premios = new PremiosTorneos();
 	
 	@Column(name = "limite_amarillas")
 	int limiteAmarillas;

@@ -7,10 +7,15 @@ import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "liga_master")
+//@Entity
+//@Table(name = "liga_master")
 public final class LigaMaster {
 
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
 	private static LigaMaster ligaMaster;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

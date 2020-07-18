@@ -30,6 +30,11 @@
         <mapping class="logic.entities.DT" />
         <mapping class="logic.entities.Jugador" />
         <mapping class="logic.entities.Transferencia" />
+        <mapping class="logic.entities.LigaMaster" />
+        <mapping class="logic.entities.Oferta" />
+        <mapping class="logic.entities.Mercado" />
+        <mapping class="logic.entities.Partido" />
+        <mapping class="logic.entities.Torneo" />
 
     </session-factory>
 

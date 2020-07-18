@@ -40,11 +40,11 @@ public class Partido {
 	int numeroFecha;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "dt_id")
+	@JoinColumn(name = "dt_local_id")
 	DT dtLocal;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "dt_id")
+	@JoinColumn(name = "dt_visitante_id")
 	DT dtVisitante;
 	
 	boolean terminado;

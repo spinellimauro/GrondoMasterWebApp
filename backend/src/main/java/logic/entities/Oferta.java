@@ -4,8 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -18,13 +22,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "oferta")
 public class Oferta {
 	
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dt_id")
+	@JoinColumn(name = "dt_ofertante_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	DT dtOfertante;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dt_id")
+	@JoinColumn(name = "dt_receptor_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	DT dtReceptor;
 	
