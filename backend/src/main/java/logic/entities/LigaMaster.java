@@ -5,12 +5,24 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "liga_master")
 public final class LigaMaster {
 
 	private static LigaMaster ligaMaster;
-
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "torneo_id")
 	private List<Torneo> listaTorneos = Arrays.asList(new Torneo("Nuevo Torneo"));
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "dt_id")
 	private List<DT> listaDT = Arrays.asList();
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "mercado_id")
 	Mercado mercado = new Mercado();
 
 	private LigaMaster() {

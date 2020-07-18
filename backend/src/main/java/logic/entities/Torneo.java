@@ -6,13 +6,47 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "torneo")
 public class Torneo {
+	
+	public Torneo () {
+		terminado = false;
+		limiteAmarillas = 3;
+	}
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "nombre_torneo")
 	String nombreTorneo = "";
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "dt_id")
 	List<DT> listaParticipantes = Arrays.asList();
+	
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "partido_id")
 	List<Partido> listaPartidos = Arrays.asList();
+	
 	PremiosTorneos premios = new PremiosTorneos();
-	int limiteAmarillas = 3;
-	boolean terminado = false;
+	
+	@Column(name = "limite_amarillas")
+	int limiteAmarillas;
+	
+	boolean terminado;
 
 	
 	public Torneo(String _nombreTorneo) {
