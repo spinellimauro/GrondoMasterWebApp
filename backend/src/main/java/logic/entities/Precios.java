@@ -50,7 +50,7 @@ final class Precios {
 		new PrecioEvento("PrecioMaquina", 4)	
 	);
 
-	public double getPrecio(Jugador jugador) {
+/*	public double getPrecio(Jugador jugador) {
 		int nivelJugador = jugador.getNivel();
 		if(nivelJugador > 76) {
 			getPrecio(nivelJugador);
@@ -58,7 +58,7 @@ final class Precios {
 			getPrecio(76);
 		}
 		return nivelJugador;
-	}
+	}*/
 
 	public double getPrecio(int integer) {
 		return listaNiveles.stream().filter(precioNivel -> precioNivel.getNivel() == integer).findFirst().get().getPrecio();

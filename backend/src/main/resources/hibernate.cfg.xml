@@ -26,13 +26,14 @@
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
 
-        <mapping class="logic.entities.Posicion" />
+        <mapping class="logic.entities.Suceso" />
         <mapping class="logic.entities.DT" />
+        <mapping class="logic.entities.Equipo" />
         <mapping class="logic.entities.Jugador" />
         <mapping class="logic.entities.Transferencia" />
-        <mapping class="logic.entities.LigaMaster" />
+<!--        <mapping class="logic.entities.LigaMaster" />-->
         <mapping class="logic.entities.Oferta" />
-        <mapping class="logic.entities.Mercado" />
+        <!--<mapping class="logic.entities.Mercado" />-->
         <mapping class="logic.entities.Partido" />
         <mapping class="logic.entities.Torneo" />
 

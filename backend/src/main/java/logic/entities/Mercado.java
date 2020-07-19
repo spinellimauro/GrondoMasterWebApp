@@ -16,8 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "mercado")
+
 public class Mercado {
 	
 	@Id
@@ -35,7 +34,7 @@ public class Mercado {
 	
 	
 	
-	public List<Oferta> getOfertasRecibidas(Jugador jugador) {
+/*	public List<Oferta> getOfertasRecibidas(Jugador jugador) {
 		return listaOfertas.stream().filter(oferta -> oferta.jugadorOfertado.equals(jugador)).collect(Collectors.toList());
 	}
 	
@@ -45,7 +44,7 @@ public class Mercado {
 
 	public List<Oferta> getOfertasEnviadas(DT dt) {
 		return listaOfertas.stream().filter(oferta -> oferta.dtOfertante.equals(dt)).collect(Collectors.toList());
-	}
+	}*/
 	
 	public void agregarTransferencia(Transferencia transferencia){
 		listaTraspasos.add(transferencia);

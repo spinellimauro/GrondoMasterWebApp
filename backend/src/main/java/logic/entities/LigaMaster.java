@@ -7,31 +7,16 @@ import java.util.stream.Collectors;
 
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "liga_master")
 public final class LigaMaster {
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
 	private static LigaMaster ligaMaster;
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "torneo_id")
+
 	private List<Torneo> listaTorneos = Arrays.asList(new Torneo("Nuevo Torneo"));
-	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "dt_id")
 	private List<DT> listaDT = Arrays.asList();
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "mercado_id")
 	Mercado mercado = new Mercado();
 
 	private LigaMaster() {
-    }
+	}
 
 	public static LigaMaster getInstance() {
 		if (ligaMaster == null) {
@@ -44,23 +29,23 @@ public final class LigaMaster {
 		return ligaMaster;
 	}
 
-	public DT getMaster() {
-		return new DT("Master","ARG123");
-	}
-
-	public List<Jugador> getListaJugador() {
-		return listaDT.stream().flatMap(dt -> dt.getListaJugadores().stream()).collect(Collectors.toList());
-	}
-
-	public Set<DT> getDTsQuePagan() {
-		return listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
-	}
-
-	public Set<Jugador> getListaTransferibles() {
-		List<Jugador> jugadores = listaDT.stream().flatMap(dt -> getListaJugador().stream()).collect(Collectors.toList());
-		return jugadores.stream().filter(jugador -> jugador.getPrecioVenta() > 0).collect(Collectors.toSet());
-//		.filter[precioVenta > 0].toSet
-	}
+//	public DT getMaster() {
+//		return new DT("Master","ARG123");
+//	}
+//
+//	public Set<Jugador> getListaJugador() {
+//		return listaDT.stream().map(dt -> dt.getListaJugadores()).collect(Collectors.toSet());
+//	}
+//
+//	public Set<DT> getDTsQuePagan() {
+//		return listaDT.stream().filter(dt -> dt.getTorneosDisponibles() == 0).collect(Collectors.toSet());
+//	}
+//
+//	public Set<Jugador> getListaTransferibles() {
+//		List<Jugador> jugadores = listaDT.stream().flatMap(dt -> getListaJugador().stream()).collect(Collectors.toList());
+//		return jugadores.stream().filter(jugador -> jugador.getPrecioVenta() > 0).collect(Collectors.toSet());
+////		.filter[precioVenta > 0].toSet
+//	}
 
 //	private void leerBase() {
 //		try
@@ -74,56 +59,57 @@ public final class LigaMaster {
 //		printer.close
 //	}
 
-	void addDT(DT dt) throws Exception {
-		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
-			throw new Exception("Ese nombre de DT ya est� en uso");
-
-		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
-			throw new Exception("Ese nombre de Equipo ya est� en uso");
-
-		listaDT.add(dt);
-	}
-
-	void addTorneo(Torneo torneo) {
-		listaTorneos.add(torneo);
-	}
-
-	void removeTorneo(Torneo torneo) {
-		listaTorneos.remove(torneo);
-	}
-
-	
-
-	public DT getPropietario(Jugador jugador) {
-		DT libre = new DT("Libre");
-		DT propietario = listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst().get();
-		
-		if(listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst() == null) {
-			return libre;
-		}else {
-			return propietario;
-		}
-	}
+//	void addDT(DT dt) throws Exception {
+//		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
+//			throw new Exception("Ese nombre de DT ya est� en uso");
+//
+//		if (listaDT.stream().anyMatch(dtList -> dtList.getNombreDT().equals(dt.getNombreDT())))
+//			throw new Exception("Ese nombre de Equipo ya est� en uso");
+//
+//		listaDT.add(dt);
+//	}
+//
+//	void addTorneo(Torneo torneo) {
+//		listaTorneos.add(torneo);
+//	}
+//
+//	void removeTorneo(Torneo torneo) {
+//		listaTorneos.remove(torneo);
+//	}
+//
+//
+//
+//	public DT getPropietario(Jugador jugador) {
+//		DT libre = new DT("Libre");
+//		DT propietario = listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst().get();
+//
+//		if(listaDT.stream().filter(dt -> dt.getListaJugadores().contains(jugador)).findFirst() == null) {
+//			return libre;
+//		}else {
+//			return propietario;
+//		}
+//	}
 
 //	void update() {
 //		listaJugador.forEach[update]
 //	}
 
 	// C�lculo del Historial //TODO: Ver bien despues.
-	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
-		List<Partido> partidos = listaTorneos.stream().flatMap(torneo -> torneo.getListaPartidos().stream()).collect(Collectors.toList());
-		return partidos.stream().filter(partido -> partido.getJugoPartido(dt) && partido.getJugoPartido(otroDT) && partido.getTerminado()).collect(Collectors.toList());
-	}
+//	public List<Partido> getPartidosJugados(DT dt, DT otroDT) {
+//		List<Partido> partidos = listaTorneos.stream().flatMap(torneo -> torneo.getListaPartidos().stream()).collect(Collectors.toList());
+//		return partidos.stream().filter(partido -> partido.getJugoPartido(dt) && partido.getJugoPartido(otroDT) && partido.getTerminado()).collect(Collectors.toList());
+//	}
+//
+//	public int getPartidosGanados(DT dt, DT otroDT) {
+//		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 3).collect(Collectors.toList()).size();
+//	}
+//
+//	public int getPartidosEmpatados(DT dt, DT otroDT) {
+//		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 1).collect(Collectors.toList()).size();
+//	}
+//
+//	public int getPartidosPerdidos(DT dt, DT otroDT) {
+//		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 0).collect(Collectors.toList()).size();
+//	}
 
-	public int getPartidosGanados(DT dt, DT otroDT) {
-		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 3).collect(Collectors.toList()).size();
-	}
-
-	public int getPartidosEmpatados(DT dt, DT otroDT) {
-		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 1).collect(Collectors.toList()).size();
-	}
-
-	public int getPartidosPerdidos(DT dt, DT otroDT) {
-		return getPartidosJugados(dt, otroDT).stream().filter(partido -> partido.getPuntos(dt) == 0).collect(Collectors.toList()).size();
-	}
 }

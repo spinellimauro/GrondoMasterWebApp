@@ -1,6 +1,7 @@
 package logic.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -13,29 +14,20 @@ public class Transferencia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/*@Column(name = "dt_comprador")
-	String dtCompra;
-
-	@Column(name = "dt_vendedor")
-	String dtVende;*/
-
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dt_comprador_id")
+	@JoinColumn(name = "dt_comprador_id", nullable = false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	DT dtComprador;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "dt_vendedor_id")
+	@JoinColumn(name = "dt_vendedor_id", nullable = false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	DT dtVendedor;
 
 	double monto;
 
-	/*@Column(name = "jugador_comprado")
-	String jugadorComprado;*/
-
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "jugador_id")
+	@JoinColumn(name = "jugador_id", nullable = false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	Jugador jugador;
 
@@ -47,22 +39,6 @@ public class Transferencia {
 		this.id = id;
 	}
 
-/*	public String getDtCompra() {
-		return dtCompra;
-	}
-
-	public void setDtCompra(String dtCompra) {
-		this.dtCompra = dtCompra;
-	}
-
-	public String getDtVende() {
-		return dtVende;
-	}
-
-	public void setDtVende(String dtVende) {
-		this.dtVende = dtVende;
-	}*/
-
 	public double getMonto() {
 		return monto;
 	}
@@ -70,14 +46,6 @@ public class Transferencia {
 	public void setMonto(double monto) {
 		this.monto = monto;
 	}
-
-/*	public String getJugadorComprado() {
-		return jugadorComprado;
-	}
-
-	public void setJugadorComprado(String jugadorComprado) {
-		this.jugadorComprado = jugadorComprado;
-	}*/
 
 	public DT getDtComprador() {
 		return dtComprador;
