@@ -1,0 +1,91 @@
+@import 'loader';
+@import 'chip';
+@import 'badge';
+@import 'layout';
+
+.router-outlet {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logobayer {
+  background-image: url(/assets/images/logobayer.svg);
+  background-size: 50px 50px;
+  background-repeat: no-repeat;
+  margin-left: 25px;
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (min-width: 40em) {
+  .logobayer {
+    background-size: 60px 60px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.avatar {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: mat-color($primary);
+  height: 120px;
+  font-size: 20px;
+  text-align: center;
+  color: mat-color($accent);
+}
+
+.swiper-img {
+  text-align: center;
+}
+
+.error {
+  text-align: left;
+  font-size: 10.5px;
+  color: #f44336;
+}
+
+.combos-grid {
+  .ui-widget-content {
+    background-color: transparent;
+    border: transparent;
+  }
+  .combo {
+    height: 200px
+  }
+}
+
+.combo-img {
+  max-height: 80px;
+  max-width: 90%;
+}
+
+.terminos-condiciones {
+  height: 250px;
+  padding: 5px;
+  overflow-y: auto
+}
+
+.pedido {
+  .mat-input-element:disabled {
+    color: black
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.full-width {
+  max-width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}

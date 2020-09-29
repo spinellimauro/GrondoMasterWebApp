@@ -1,0 +1,37 @@
+.grid-xy {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.header {
+  background-color: mat-color($primary);
+  color: mat-color($accent)
+}
+
+.footer {
+  color: mat-color($accent);
+  background-color: rgb(66, 66, 66);
+  font-size: 14px;
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+  .link {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 40em) {
+  .footer {
+    flex-direction: row;
+  }
+}
+
+.header,
+.footer {
+  flex-shrink: 0;
+}
+
+.main {
+  flex: 1 0 auto;
+}

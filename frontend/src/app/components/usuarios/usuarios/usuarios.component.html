@@ -1,0 +1,41 @@
+<!-- <div class="main">
+  <p-table [value]="usuarios" [rows]="10" [paginator]="true" [responsive]="true" sortField="nombre"
+    [resizableColumns]="true" columnResizeMode="expand" [globalFilterFields]="['nombre', 'apellido', 'email']"
+    [columns]="cols" [reorderableColumns]="true">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          Acciones
+        </th>
+        <th *ngFor="let col of cols">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario>
+      <tr>
+        <td>
+          <p-button icon="fas fa-edit" (click)="editar(usuario.id)"></p-button>
+          <p-button icon="fas fa-trash-alt" (click)="borrar(usuario.id)"></p-button>
+        </td>
+        <td *ngFor="let col of cols" class="alinearCentro">
+          <span *ngIf="col.field === 'habilitacion'">
+            <mat-icon color="primary">{{ usuario.habilitacion ? 'check_box' : 'check_box_outline_blank' }}
+            </mat-icon>
+          </span>
+          <span *ngIf="col.field !== 'habilitacion' ">
+            {{usuario[col.field]}}
+          </span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage" let-cols>
+      <tr>
+        <td [attr.colspan]="cols.length + 1">
+          No se encontraron resultados
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div> -->
+Bienvenido

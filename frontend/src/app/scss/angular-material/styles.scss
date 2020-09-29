@@ -1,0 +1,66 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-blue);
+$accent: mat-palette($mat-grey, A200, A100, A400);
+$warn: mat-palette($mat-red);
+$custom-theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($custom-theme);
+
+h4 {
+  font-weight: bolder;
+  margin: 0 !important;
+}
+
+.mat-dialog-title {
+  font-weight: bolder;
+  text-align: center;
+}
+
+mat-nav-list {
+  mat-list-item {
+    background-color: transparent;
+  }
+}
+
+.mat-spacer {
+  flex: 1 1 auto;
+}
+
+mat-drawer {
+  width: 260px;
+}
+
+.mat-list {
+  padding-top: 0px;
+}
+
+mat-tab-body {
+  margin-top: 10px;
+}
+
+.mat-checkbox-list {
+  mat-checkbox {
+    display: block;
+  }
+}
+
+// Fix IE mat-icon-button bug
+div .mat-button-ripple-round {
+  z-index: 0;
+}
+
+.mat-menu-content:not(:empty){
+  padding: 0 !important;
+}
+
+.descripcion {
+  color: #000000;
+    text-decoration: none;
+}
+
+.cdk-overlay-pane {
+  transform: inherit !important;
+}

@@ -1,0 +1,41 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="grid-y grid-margin-y">
+
+    <div class=" cell grid-x align-center">
+      <mat-form-field class="cell small-8">
+        <mat-placeholder>
+          <mat-icon>mail</mat-icon> Email
+        </mat-placeholder>
+        <input matInput name="LoginUserName" formControlName="username">
+        <!-- <mat-error *ngIf="Username.hasError('required')">
+          {{ config.Validaciones.Login.Usuario }}
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="cell grid-x align-center">
+      <mat-form-field class="cell small-8">
+        <mat-placeholder>
+          <mat-icon>vpn_key</mat-icon> Contraseña
+        </mat-placeholder>
+        <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="off">
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <!-- <mat-error *ngIf="Password.hasError('required')">
+          {{ config.Validaciones.Login.Password }}
+        </mat-error> -->
+      </mat-form-field>
+    </div>
+
+    <div class="cell grid-x align-center">
+      <div class="cell shrink">
+        <button mat-raised-button [disabled]="loginForm.invalid" type="submit" color="primary">Entrar</button>
+      </div>
+    </div>
+    <div class="cell grid-x align-center">
+      <div class="cell shrink">
+        <a mat-button (click)="forgotPassword()" color="primary">¿Olvidó su contraseña?</a> ó
+        <a mat-button (click)="registro()" color="primary">Regístrese</a>
+      </div>
+    </div>
+  </div>
+</form>

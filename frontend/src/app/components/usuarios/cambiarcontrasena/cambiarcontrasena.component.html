@@ -1,0 +1,78 @@
+<div class="grid-x align-center">
+
+  <div class="cell medium-10 large-8">
+    <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-content>
+
+          <div class="grid-x align-center">
+
+            <div class="cell small-8">
+              <div class="iconoVisibilidadAlineadoALaDerecha">
+                <input type="password" pPassword formControlName="currentPassword" [type]="hide1 ? 'password' : 'text'"
+                  autocomplete="off" class="passwordField" placeholder="Contraseña Actual">
+                <mat-icon class="distanciaCampoIcono" matSuffix (click)="hide1 = !hide1">
+                  {{ hide1 ? 'visibility' : 'visibility_off' }}</mat-icon>
+              </div>
+              <span class="valerror"
+                *ngIf="passwordForm.hasError('currentPassword') && passwordForm.get('currentPassword').touched">
+                Ingrese su contraseña
+              </span>
+            </div>
+          </div>
+
+          <br>
+          <div class="grid-x align-center">
+            <div class="cell small-8">
+              <div class="iconoVisibilidadAlineadoALaDerecha">
+                <input type="password" pPassword formControlName="newPassword" [type]="hide2 ? 'password' : 'text'"
+                  autocomplete="off" class="passwordField" placeholder="Contraseña Nueva">
+
+                <mat-icon class="distanciaCampoIcono" matSuffix (click)="hide2 = !hide2">
+                  {{ hide2 ? 'visibility' : 'visibility_off' }}</mat-icon>
+              </div>
+              <span class="valerror"
+                *ngIf="newPassword.hasError('minlength') && passwordForm.get('newPassword').touched">
+                Debe tener como mínimo 8 caracteres
+              </span>
+              <span class="valerror"
+                *ngIf="newPassword.hasError('maxlength') && passwordForm.get('newPassword').touched">
+                Debe tener como máximo 25 caracteres
+              </span>
+            </div>
+
+            <div class="error cell small-8" *ngIf="newPassword.hasError('passwordPattern') && newPassword.touched">
+              <div *ngFor="let validacion of config._validaciones.ValidacionContrasenaNueva">
+                {{ validacion }}
+              </div>
+            </div>
+          </div>
+          <br>
+
+          <div class="grid-x align-center">
+            <div class="cell small-8">
+              <div class="iconoVisibilidadAlineadoALaDerecha">
+                <input type="password" pPassword formControlName="newPasswordConfirmed"
+                  [type]="hide3 ? 'password' : 'text'" autocomplete="off" class="passwordField"
+                  placeholder="Confirmación Contraseña Nueva">
+                <mat-icon class="distanciaCampoIcono" matSuffix (click)="hide3 = !hide3">
+                  {{ hide3 ? 'visibility' : 'visibility_off' }}</mat-icon>
+              </div>
+
+              <span class="valerror" *ngIf="newPasswordConfirmed.hasError('compare')">
+                Confirme su nueva contraseña
+              </span>
+            </div>
+          </div>
+
+        </mat-card-content>
+
+        <div class="grid-x align-center">
+          <div class="cell shrink">
+            <p-button [disabled]="passwordForm.invalid" type="submit" label="Cambiar"></p-button>
+          </div>
+        </div>
+      </mat-card>
+    </form>
+  </div>
+</div>

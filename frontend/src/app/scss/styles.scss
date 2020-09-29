@@ -1,0 +1,160 @@
+
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+// Custom Styles
+@import 'angular-material/styles';
+@import 'foundation/styles';
+@import 'primeng/styles';
+@import 'custom/styles';
+@import '~ngx-toastr/toastr';
+/* Material Icons */
+
+@media screen and (min-width:0\0) { 
+  .cdk-global-overlay-wrapper {
+    display: block !important;
+    overflow: auto;
+    padding: 30px;
+    position: fixed;
+  }
+  
+  .cdk-overlay-pane {
+    margin: auto !important;
+  }
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.router-outlet {
+  background-color: #f4f4f4;
+  height: 100vh;
+}
+
+.grid-xy {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+}
+
+.mat-card {
+  font-family: 'Roboto-Condensed', Arial;
+}
+
+.valerror {
+  color: #FD4A72;
+}
+
+// select.ng-invalid.ng-touched {
+//   border: 0.05rem solid #FD4A72;
+// }
+
+// input.ng-invalid.ng-touched {
+//   border: 0.05rem solid #FD4A72;
+// }
+
+.alinearDerecha {
+  text-align: right;
+}
+
+.alinearCentro {
+  text-align: center;
+}
+
+.widthAuto {
+  width: auto !important;
+}
+
+.widthMaxContent {
+  width: max-content !important;
+}
+
+.iconoVisibilidadAlineacionVertical {
+  line-height: unset;
+}
+
+.iconoVisibilidadAlineadoALaDerecha {
+  display: flex;
+  input {
+      flex: none;
+  }
+}
+
+.boxIconoLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconoVisibilidadAlineacionVertical.mat-icon.material-icons,
+.distanciaCampoIcono {
+  padding-left: 10px;
+}
+
+.boxLogin .iconoVisibilidadAlineadoALaDerecha input,
+.boxLogin .ui-g.ui-fluid input {
+    margin: 0;
+}
+
+.mat-card-header {
+  background: linear-gradient(to right, rgb(211, 15, 75), rgb(246, 42, 93));
+  height: 60px;
+
+  .mat-card-title {
+    color:#ffffff;
+    font-size: 16px;
+    line-height:60px;
+    display: inline-block;
+    vertical-align: middle;
+
+    .mat-icon{
+      height: inherit;
+      width: inherit;
+    }
+
+    .material-icons {
+      font-size: 17px;
+      vertical-align: middle;
+    }
+  }
+ 
+}
+
+.boxInputUsuario {
+  margin-top: 2rem;
+}
+
+.boxInputUsuario,
+.boxInput {
+  margin-bottom: 2rem;
+}
+
+.sinScroll {
+  overflow: hidden !important;
+}
+
+.allow-cr {
+  white-space: pre-line;
+}

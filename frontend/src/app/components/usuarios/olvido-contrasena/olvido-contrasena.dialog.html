@@ -1,0 +1,33 @@
+<form novalidate [formGroup]="userForm">
+  <h1 mat-dialog-title>Solicitud de contraseña</h1>
+
+  <mat-dialog-content>
+
+    <div class="grid-x">
+
+
+      <mat-form-field class="cell">
+
+        <mat-placeholder>
+          <mat-icon>email</mat-icon> Email
+        </mat-placeholder>
+
+        <input matInput formControlName="Email" type="text">
+
+        <mat-error *ngIf="email.hasError('required')">
+          Debe ingresar un email
+        </mat-error>
+
+      </mat-form-field>
+    </div>
+
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+
+    <button mat-button [disabled]="userForm.invalid" (click)="aceptar()">Aceptar</button>
+    <button mat-button mat-dialog-close>Cerrar</button>
+
+  </mat-dialog-actions>
+
+</form>

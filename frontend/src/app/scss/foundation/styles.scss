@@ -1,0 +1,38 @@
+@import '~foundation-sites/scss/foundation';
+
+@include foundation-global-styles;
+@include foundation-xy-grid-classes;
+@include foundation-flex-classes;
+
+$input-border: 1px solid #D30D4B !default;
+
+/// Border around focused text inputs.
+/// @type Color
+$input-border-focus: 1px solid #E3678E !default;
+
+.button.hollow {
+    border: 1px solid #D30D4B;
+    color: #D30D4B;
+  }
+  
+  .button.hollow:hover {  
+    border-color: #E3678E;
+    color: #E3678E;
+  }
+  
+  .button.hollow:focus {
+    border-color: #D30D4B;
+    color: #D30D4B;
+    outline: none;
+  }
+
+
+  // Using the default styles
+.custom-button-class { @include button; }
+
+.expand {
+  display: block;
+  width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}

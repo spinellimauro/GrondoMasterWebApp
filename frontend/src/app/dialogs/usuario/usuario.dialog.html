@@ -1,0 +1,92 @@
+<form [formGroup]="usuario">
+
+  <div class="grid-y">
+    <mat-dialog-content class="sinScroll">
+      <h4>{{Etiquetas.Users.Datos}}</h4>
+      <p></p>
+      <p></p>
+
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 large-6 cell">
+          <mat-form-field class="cell">
+            <input matInput placeholder="Nombre" formControlName="nombre">
+            <mat-error *ngIf="usuario.get('nombre').hasError('required') && usuario.get('nombre').touched">
+              {{Validaciones.Users.Nombre}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="medium-6 large-6 cell">
+          <mat-form-field class="cell">
+            <input matInput placeholder="Apellido" formControlName="apellido">
+            <mat-error *ngIf="usuario.get('apellido').hasError('required') && usuario.get('apellido').touched">
+              {{Validaciones.Users.Apellido}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="grid-x grid-margin-x">
+        <div class="medium-6 large-6 cell">
+          <mat-form-field class="cell">
+            <input matInput placeholder="Email" formControlName="username">
+            <mat-error
+              *ngIf="(usuario.get('username').hasError('required') || usuario.get('username').hasError('email')) && (usuario.get('username').touched )">
+              {{Validaciones.Users.Email}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div *ngIf="esUnAlta" class="medium-6 large-6 cell">
+          <mat-form-field class="cell">
+            <input matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="usuario.get('password').hasError('required') && usuario.get('password').touched">
+              {{Validaciones.Users.Password}}
+            </mat-error>
+            <mat-error *ngIf="usuario.get('password').hasError('minlength') && usuario.get('password').touched">
+              {{Validaciones.Users.PasswordMinLength}}
+            </mat-error>
+            <mat-error *ngIf="usuario.get('password').hasError('maxlength') && usuario.get('password').touched">
+              {{Validaciones.Users.PasswordMaxLength}}
+            </mat-error>
+            <mat-error *ngIf="usuario.get('password').hasError('passwordPattern') && usuario.get('password').touched">
+              {{Validaciones.Users.PasswordSpecific}}
+            </mat-error>
+            <mat-icon matSuffix matTooltipClass="allow-cr" matTooltip="{{Validaciones.ValidacionContrasenaNueva}}">help
+            </mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- <div *ngIf="!esUnAlta" class="grid-x grid-margin-x">
+        <div class="medium-6 large-6 cell">
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>{{Etiquetas.Seleccione}}</mat-label>
+              <mat-select [compareWith]="compareFn" formControlName="roles" multiple>
+                <mat-option *ngFor="let rol of roles" [value]="rol">{{rol.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <mat-error *ngIf="usuario.get('roles').hasError('required') && usuario.get('roles').touched">
+            {{Validaciones.Users.Rol}}
+          </mat-error>
+        </div>
+      </div> -->
+
+      <!-- <div *ngIf="!esUnAlta" class="medium-6 large-6 cell">
+        <mat-checkbox class="cell" formControlName="habilitacion" color="primary">
+        </mat-checkbox>
+        {{Etiquetas.Users.Habilitacion}}
+      </div> -->
+
+    </mat-dialog-content>
+  </div>
+
+  <p></p>
+  <p></p>
+
+  <mat-dialog-actions>
+    <button mat-button [disabled]="usuario.invalid" type="button" color="primary"
+      (click)="guardar()">{{Etiquetas.Guardar}}</button>
+  </mat-dialog-actions>
+
+</form>

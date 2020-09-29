@@ -1,3 +1,47 @@
 {
-    "url": "http://localhost:9000/"
+  "URI": {
+    "Server": "http://localhost:8080/",
+    "Api": "api/",
+    "Auth": "auth",
+    "Usuario": "user"
+  },
+  "Mensajes": {
+    "TituloSuccess": "Atención",
+    "AUsuario": "Usuario agregado",
+    "MUsuario": "Usuario editado",
+    "BUsuario": "Usuario eliminado"
+  },
+  "Validaciones": {
+    "ValidacionContrasenaNueva": [
+      "La contraseña debe cumplir los siguientes requisitos:\nEntre 8 y 30 caracteres\nAl menos una letra mayúscula (A-Z)\nAl menos una letra minúscula (a-z)\nAl menos un número (0-9)"
+    ],
+    "ConfirmacionContrasenaNueva": "No coincide con la nueva contraseña",
+    "Users": {
+      "Rol": "Seleccione al menos un rol",
+      "Nombre": "Ingrese el nombre del usuario",
+      "Apellido": "Ingrese el apellido del usuario",
+      "Email": "Ingrese el email del usuario",
+      "Password": "Ingrese el password del usuario",
+      "PasswordMinLength": "Debe tener al menos 8 caracteres",
+      "PasswordMaxLength": "Debe tener como máximo 30 caracteres",
+      "PasswordSpecific": "Debe tener al menos una letra mayúscula, una letra minúscula y un número"
+    },
+    "Login": {
+      "Usuario": "Ingrese el nombre de usuario",
+      "Password": "Ingrese el password del usuario"
+    }
+  },
+  "Etiquetas": {
+    "Guardar": "Guardar",
+    "Seleccione": "Seleccione",
+    "Register": "Registrarme",
+    "Users": {
+      "Rol": "Roles",
+      "Datos": "Datos de Usuario",
+      "Habilitacion": "Habilitación"
+    },
+    "Login": {
+      "Titulo": "Login"
+    }
+  }
 }
