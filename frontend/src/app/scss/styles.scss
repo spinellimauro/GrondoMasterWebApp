@@ -1,5 +1,3 @@
-
-
 @import "~@fortawesome/fontawesome-free/css/all.css";
 // Custom Styles
 @import 'angular-material/styles';
@@ -9,14 +7,14 @@
 @import '~ngx-toastr/toastr';
 /* Material Icons */
 
-@media screen and (min-width:0\0) { 
+@media screen and (min-width:0\0) {
   .cdk-global-overlay-wrapper {
     display: block !important;
     overflow: auto;
     padding: 30px;
     position: fixed;
   }
-  
+
   .cdk-overlay-pane {
     margin: auto !important;
   }
@@ -26,7 +24,8 @@
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px;
+  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -67,14 +66,6 @@
   color: #FD4A72;
 }
 
-// select.ng-invalid.ng-touched {
-//   border: 0.05rem solid #FD4A72;
-// }
-
-// input.ng-invalid.ng-touched {
-//   border: 0.05rem solid #FD4A72;
-// }
-
 .alinearDerecha {
   text-align: right;
 }
@@ -97,8 +88,9 @@
 
 .iconoVisibilidadAlineadoALaDerecha {
   display: flex;
+
   input {
-      flex: none;
+    flex: none;
   }
 }
 
@@ -115,7 +107,7 @@
 
 .boxLogin .iconoVisibilidadAlineadoALaDerecha input,
 .boxLogin .ui-g.ui-fluid input {
-    margin: 0;
+  margin: 0;
 }
 
 .mat-card-header {
@@ -123,13 +115,13 @@
   height: 60px;
 
   .mat-card-title {
-    color:#ffffff;
+    color: #ffffff;
     font-size: 16px;
-    line-height:60px;
+    line-height: 60px;
     display: inline-block;
     vertical-align: middle;
 
-    .mat-icon{
+    .mat-icon {
       height: inherit;
       width: inherit;
     }
@@ -139,22 +131,26 @@
       vertical-align: middle;
     }
   }
- 
+
 }
 
-.boxInputUsuario {
-  margin-top: 2rem;
+.mainLogin {
+  background-image: url('../../assets/images/login.jpg');
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
-.boxInputUsuario,
-.boxInput {
-  margin-bottom: 2rem;
+@media screen and (min-width: 40em) {
+  .cardLogin {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
 }
 
-.sinScroll {
-  overflow: hidden !important;
-}
-
-.allow-cr {
-  white-space: pre-line;
+.alignToRightContent {
+  text-align: right;
 }

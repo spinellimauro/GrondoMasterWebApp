@@ -1,12 +1,13 @@
 <mat-toolbar color="primary" *ngIf="isLogged()">
-  <mat-toolbar-row>
+  <mat-toolbar-row class="grid-x grid-padding-x align-justify">
     <!-- <a [routerLink]="'/'"><img src="/assets/images/timetix_logo.png" style="height: 30px;" /></a> -->
-    <button mat-button (click)="toHome()">
-      <mat-icon>home</mat-icon>
-    </button>
-    <span class="menu-spacer"></span>
-
-    <div class="ui-toolbar-group-right">
+    <div class="cell small-4">
+      <button mat-button (click)="toHome()">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span class="menu-spacer"></span>
+    </div>
+    <div class="cell small-4 alignToRightContent">
       <button mat-button [matMenuTriggerFor]="menu">Bienvenido/a {{logged?.Name}}</button>
       <mat-menu #menu="matMenu">
         <button mat-menu-item class="widthAuto" routerLink="/cambio-contrasena">
