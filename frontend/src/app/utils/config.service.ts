@@ -47,6 +47,10 @@ export class ConfigService {
     return this.URI(this._uri.Usuario);
   }
 
+  get JugadorURI(): string {
+    return this.URI(this._uri.Jugador);
+  }
+
   get ServerURI(): string {
     return this._uri.Server;
   }
@@ -106,4 +110,5 @@ interface URI {
   Api: string;
   Auth: string;
   Usuario: string;
+  Jugador: string;
 }

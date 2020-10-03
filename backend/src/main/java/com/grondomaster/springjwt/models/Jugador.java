@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "jugador")
 public class Jugador {
 
-	Jugador() {
+	public Jugador() {
 		habilitado = true;
 	}
 	

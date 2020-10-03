@@ -23,7 +23,6 @@ import { PrimeNGModule } from './utils/primeng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrService, ToastrModule } from 'ngx-toastr';
 import { TableModule } from 'primeng/table';
-import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
 import { AppErrorHandler } from './utils/error.service';
 import { LoggedGuard } from './utils/logged.guard';
 import { LoggedService, getToken } from './utils/logged.service';
@@ -31,11 +30,14 @@ import { LoginComponent } from './components/usuarios/Login/login.component';
 import { ConfirmarEmailComponent } from './components/usuarios/confirmacion-contrasena/confirmar-email.component';
 import { JwtModule } from '@auth0/angular-jwt';
 // import { registerLocaleData, LocationStrategy, HashLocationStrategy } from '@angular/common';
-import localeEsAr from '@angular/common/locales/es-AR';
-import localeEsArExtra from '@angular/common/locales/extra/es-AR';
+// import localeEsAr from '@angular/common/locales/es-AR';
+// import localeEsArExtra from '@angular/common/locales/extra/es-AR';
 import { CambiarContrasenaComponent } from './components/usuarios/cambiarcontrasena/cambiarcontrasena.component';
 import { OlvidoContrasenaDialog } from './components/usuarios/olvido-contrasena/olvido-contrasena.dialog';
 import { AuthInterceptor } from './utils/auth.interceptor';
+import { SearchJugadoresComponent } from './components/jugadores/searchJugadores/searchJugadores.component';
+import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
+import { JugadorService } from './components/jugadores/jugadorService';
 
 // registerLocaleData(localeEsAr, localeEsArExtra)
 
@@ -45,6 +47,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     LoginComponent,
     ConfirmarEmailComponent,
     UsuariosComponent,
+    SearchJugadoresComponent,
     CambiarContrasenaComponent,
     UsuarioDialog,
     OlvidoContrasenaDialog,
@@ -75,6 +78,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     ConfirmarEmailComponent,
     UsuarioDialog,
     UsuariosComponent,
+    SearchJugadoresComponent,
     CambiarContrasenaComponent,
     OlvidoContrasenaDialog,
   ],
@@ -88,6 +92,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
     FormBuilder,
     Validators,
     UsuariosService,
+    JugadorService,
 
     { provide: LOCALE_ID, useValue: 'es-AR' },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },

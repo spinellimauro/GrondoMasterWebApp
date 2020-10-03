@@ -3,7 +3,8 @@
     "Server": "http://localhost:8080/",
     "Api": "api/",
     "Auth": "auth",
-    "Usuario": "user"
+    "Usuario": "user",
+    "Jugador": "soFifa"
   },
   "Mensajes": {
     "TituloSuccess": "Atención",
