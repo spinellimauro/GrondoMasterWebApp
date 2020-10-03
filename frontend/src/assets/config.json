@@ -44,5 +44,8 @@
     "Login": {
       "Titulo": "Login"
     }
+  },
+  "Configuraciones": {
+    "ImagenDefaultJugador": "https://cdn.sofifa.com/players/notfound_0_240.png"
   }
 }

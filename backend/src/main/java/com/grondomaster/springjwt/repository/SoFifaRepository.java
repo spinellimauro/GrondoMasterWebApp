@@ -17,6 +17,7 @@ public class SoFifaRepository {
         List<Jugador> jugadores = new ArrayList<>();
         try {
             Document document = Jsoup.connect("http://sofifa.com/players?keyword=" + string + "&layout=2017desktop&hl=es-ES").userAgent("Mozilla").post();
+            Thread.sleep(1000);
             Elements tabla = document.select("tbody > tr");
 
             for (int i = 0; i < tabla.size(); i++) { //first row is the col names so skip it.
@@ -28,13 +29,14 @@ public class SoFifaRepository {
                 jugador.setNacionalidad(cols.get(1).select("img").attr("title"));
                 jugador.setNacionalidadCorta(jugador.getNacionalidad().substring(0,2).toLowerCase());
                 jugador.setId(Integer.valueOf(cols.get(0).select("img").attr("id")));
+                jugador.setUrlImage(cols.get(0).select("img").attr("src"));
                 //jugador.posiciones = newArrayList(cols.get(2).select("span").map[text]);
                 jugador.setNivel(Integer.parseInt(cols.get(3).text()));
                 jugador.setPotencial(Integer.parseInt(cols.get(4).text()));
 
                 jugadores.add(jugador);
             }
-        } catch (IOException ex) {
+        } catch (IOException | InterruptedException ex) {
             System.out.println("Excepción al obtener el Status Code: " + ex.getMessage());
         }
 

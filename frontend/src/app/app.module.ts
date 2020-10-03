@@ -38,6 +38,7 @@ import { AuthInterceptor } from './utils/auth.interceptor';
 import { SearchJugadoresComponent } from './components/jugadores/searchJugadores/searchJugadores.component';
 import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
 import { JugadorService } from './components/jugadores/jugadorService';
+import { UtilService } from './utils/util.service';
 
 // registerLocaleData(localeEsAr, localeEsArExtra)
 
@@ -93,6 +94,7 @@ import { JugadorService } from './components/jugadores/jugadorService';
     Validators,
     UsuariosService,
     JugadorService,
+    UtilService,
 
     { provide: LOCALE_ID, useValue: 'es-AR' },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },

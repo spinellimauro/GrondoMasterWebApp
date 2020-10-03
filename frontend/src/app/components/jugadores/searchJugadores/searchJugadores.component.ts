@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Jugador } from 'src/app/models/Jugador';
 import { ConfigService } from 'src/app/utils/config.service';
+import { UtilService } from 'src/app/utils/util.service';
 import { JugadorService } from '../jugadorService';
 
 @Component({
@@ -15,7 +16,8 @@ export class SearchJugadoresComponent implements OnInit {
 
   constructor(
     private jugadorService: JugadorService,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private utilService: UtilService
   ) {}
 
   ngOnInit() {
@@ -29,13 +31,18 @@ export class SearchJugadoresComponent implements OnInit {
     this.jugadorService
       .getJugadoresBySearch('Vinicius')
       .subscribe((jugadores: Jugador[]) => {
-        jugadores.forEach(jugador => {
-          var idNormalizado = jugador.id.toString().length < 6 ? jugador.id.toString().padStart(1,"0") : jugador.id.toString()
-          var idImagen = idNormalizado.substring(0,3) + "/" + idNormalizado.substring(3,6)
-          jugador.idImagen = idImagen
-        }) 
-        this.jugadores = jugadores
+        jugadores.forEach((jugador) => {
+          jugador = this.utilService.checkImagenUrlJugador(jugador);
+          // var idNormalizado =
+          //   jugador.id.toString().length < 6
+          //     ? jugador.id.toString().padStart(1, '0')
+          //     : jugador.id.toString();
+          // var idImagen =
+          //   idNormalizado.substring(0, 3) + '/' + idNormalizado.substring(3, 6);
+          // jugador.idImagen = idImagen;
+        });
+
+        this.jugadores = jugadores;
       });
   }
-  
 }

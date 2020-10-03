@@ -9,6 +9,7 @@ export class ConfigService {
   private _validaciones: Validaciones;
   private _etiquetas: Etiquetas;
   private _uri: URI;
+  private _configuraciones: Configuraciones;
 
   readData() {
     const promise = this.http
@@ -22,6 +23,7 @@ export class ConfigService {
       this._mensajes = config['Mensajes'];
       this._validaciones = config['Validaciones'];
       this._etiquetas = config['Etiquetas'];
+      this._configuraciones = config['Configuraciones'];
     });
 
     return promise;
@@ -37,6 +39,10 @@ export class ConfigService {
 
   get etiquetas(): Etiquetas {
     return this._etiquetas;
+  }
+
+  get configuraciones(): Configuraciones {
+    return this._configuraciones;
   }
 
   get AuthURI(): string {
@@ -111,4 +117,8 @@ interface URI {
   Auth: string;
   Usuario: string;
   Jugador: string;
+}
+
+interface Configuraciones {
+  ImagenDefaultJugador: string;
 }
