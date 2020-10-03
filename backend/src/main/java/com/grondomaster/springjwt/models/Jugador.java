@@ -21,6 +21,9 @@ public class Jugador {
 	private String nombre;
 
 	private String nacionalidad;
+	
+	@Transient
+	private String nacionalidadCorta;
 
 	private int nivel;
 	private int potencial;
@@ -125,6 +128,14 @@ public class Jugador {
 
 	public void setNacionalidad(String nacionalidad) {
 		this.nacionalidad = nacionalidad;
+	}
+	
+	public String getNacionalidadCorta() {
+		return nacionalidadCorta;
+	}
+
+	public void setNacionalidadCorta(String nacionalidadCorta) {
+		this.nacionalidadCorta = nacionalidadCorta;
 	}
 
 	public int getNivel() {

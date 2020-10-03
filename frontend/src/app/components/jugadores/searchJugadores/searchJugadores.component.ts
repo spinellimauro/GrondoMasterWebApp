@@ -21,13 +21,21 @@ export class SearchJugadoresComponent implements OnInit {
   ngOnInit() {
     this.cols = [
       { field: 'nombre', header: 'Nombre' },
-      { field: 'nacionalidad', header: 'Nacionalidad' },
+      { field: 'nacionalidadCorta', header: 'Nacionalidad' },
       { field: 'nivel', header: 'Nivel' },
       { field: 'potencial', header: 'Potencial' },
     ];
 
     this.jugadorService
-      .getJugadoresBySearch('lionel')
-      .subscribe((jugadores: Jugador[]) => (this.jugadores = jugadores));
+      .getJugadoresBySearch('Vinicius')
+      .subscribe((jugadores: Jugador[]) => {
+        jugadores.forEach(jugador => {
+          var idNormalizado = jugador.id.toString().length < 6 ? jugador.id.toString().padStart(1,"0") : jugador.id.toString()
+          var idImagen = idNormalizado.substring(0,3) + "/" + idNormalizado.substring(3,6)
+          jugador.idImagen = idImagen
+        }) 
+        this.jugadores = jugadores
+      });
   }
+  
 }

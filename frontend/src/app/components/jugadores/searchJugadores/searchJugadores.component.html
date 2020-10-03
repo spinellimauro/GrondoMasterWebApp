@@ -1,25 +1,29 @@
-<p-table [value]="jugadores" [rows]="10" [paginator]="true" [responsive]="true" sortField="nombre"
+<p-table [value]="jugadores" [rows]="10" [paginator]="true" [responsive]="true" sortField="nivel" [sortOrder]="-1"
   [resizableColumns]="true" columnResizeMode="expand"
-  [globalFilterFields]="['nombre', 'nacionalidad', 'nivel', 'potencial']" [columns]="cols" [reorderableColumns]="true">
+  [globalFilterFields]="['nombre', 'nacionalidadCorta', 'nivel', 'potencial']" [columns]="cols" [reorderableColumns]="true">
   <ng-template pTemplate="header">
     <tr>
-      <th>
-        Acciones
-      </th>
       <th *ngFor="let col of cols">
         {{col.header}}
+      </th>
+      <th>
+        Acciones
       </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jugador>
     <tr>
+      <td *ngFor="let col of cols" class="alinearCentro">
+        <img *ngIf="col.header == 'Nombre'" width="60" height="60" src="https://cdn.sofifa.com/players/{{jugador.idImagen}}/20_60.png"/>
+        <img *ngIf="col.header == 'Nacionalidad'" width="40" height="32" src="https://cdn.sofifa.com/flags/{{jugador.nacionalidadCorta}}.png"/>
+        <div *ngIf="col.header != 'Nacionalidad'"> {{jugador[col.field]}} </div>
+      </td>
       <td>
+        
         <!-- <p-button icon="fas fa-edit" (click)="editar(usuario.id)"></p-button>
           <p-button icon="fas fa-trash-alt" (click)="borrar(usuario.id)"></p-button> -->
       </td>
-      <td *ngFor="let col of cols" class="alinearCentro">
-        {{jugador[col.field]}}
-      </td>
+      
     </tr>
   </ng-template>
   <ng-template pTemplate="emptymessage" let-cols>

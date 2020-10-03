@@ -1,7 +1,8 @@
 export class Jugador {
-  id: string;
+  idImagen: string;
+  id: number;
   nombre: string;
-  nacionalidad: string;
+  nacionalidadCorta: string;
   nivel: number;
   potencial: number;
 }
