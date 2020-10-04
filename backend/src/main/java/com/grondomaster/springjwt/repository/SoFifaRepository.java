@@ -29,7 +29,6 @@ public class SoFifaRepository {
                 jugador.setNacionalidad(cols.get(1).select("img").attr("title"));
                 jugador.setNacionalidadCorta(jugador.getNacionalidad().substring(0,2).toLowerCase());
                 jugador.setId(Integer.valueOf(cols.get(0).select("img").attr("id")));
-                jugador.setUrlImage(cols.get(0).select("img").attr("src"));
                 //jugador.posiciones = newArrayList(cols.get(2).select("span").map[text]);
                 jugador.setNivel(Integer.parseInt(cols.get(3).text()));
                 jugador.setPotencial(Integer.parseInt(cols.get(4).text()));

@@ -31,18 +31,12 @@ export class SearchJugadoresComponent implements OnInit {
     this.jugadorService
       .getJugadoresBySearch('Vinicius')
       .subscribe((jugadores: Jugador[]) => {
-        jugadores.forEach((jugador) => {
-          jugador = this.utilService.checkImagenUrlJugador(jugador);
-          // var idNormalizado =
-          //   jugador.id.toString().length < 6
-          //     ? jugador.id.toString().padStart(1, '0')
-          //     : jugador.id.toString();
-          // var idImagen =
-          //   idNormalizado.substring(0, 3) + '/' + idNormalizado.substring(3, 6);
-          // jugador.idImagen = idImagen;
-        });
-
         this.jugadores = jugadores;
       });
+  }
+
+  changeSource($event) {
+    $event.target.src =
+      '../../../../assets/images/notfound_0_120.png';
   }
 }

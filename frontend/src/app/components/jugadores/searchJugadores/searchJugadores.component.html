@@ -15,7 +15,7 @@
   <ng-template pTemplate="body" let-jugador>
     <tr>
       <td *ngFor="let col of cols" class="alinearCentro">
-        <img *ngIf="col.header == 'Nombre'" width="60" height="60" src="{{jugador.urlImage}}" />
+        <img *ngIf="col.header == 'Nombre'" width="60" height="60" src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)"/>
         <img *ngIf="col.header == 'Nacionalidad'" width="40" height="32"
           src="http://cdn.sofifa.com/flags/{{jugador.nacionalidadCorta}}.png" />
         <div *ngIf="col.header != 'Nacionalidad'"> {{jugador[col.field]}} </div>

@@ -43,8 +43,6 @@ public class Jugador {
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	Equipo equipo;
 
-	@Transient
-	String urlImage;
 
 	// Impuestos
 
@@ -196,11 +194,4 @@ public class Jugador {
 		this.equipo = equipo;
 	}
 
-	public String getUrlImage() {
-		return urlImage;
-	}
-
-	public void setUrlImage(String urlImage) {
-		this.urlImage = urlImage;
-	}
 }
