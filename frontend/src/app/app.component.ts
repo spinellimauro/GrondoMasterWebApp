@@ -11,7 +11,7 @@ import { MatMenuTrigger } from '@angular/material';
 })
 export class AppComponent implements OnInit {
   public logged?: ILogged;
-  @ViewChild(MatMenuTrigger, { static: false }) trigger: MatMenuTrigger;
+  @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
 
   constructor(private router: Router, private loggedService: LoggedService) {
     this.loggedService
