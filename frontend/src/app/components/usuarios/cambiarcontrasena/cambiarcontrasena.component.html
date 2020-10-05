@@ -42,7 +42,7 @@
             </div>
 
             <div class="error cell small-8" *ngIf="newPassword.hasError('passwordPattern') && newPassword.touched">
-              <div *ngFor="let validacion of config._validaciones.ValidacionContrasenaNueva">
+              <div *ngFor="let validacion of config.validaciones.ValidacionContrasenaNueva">
                 {{ validacion }}
               </div>
             </div>

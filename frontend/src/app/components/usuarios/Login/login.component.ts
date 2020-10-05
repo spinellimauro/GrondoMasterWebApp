@@ -5,7 +5,7 @@ import { ConfigService } from 'src/app/utils/config.service';
 import { UsuariosService } from '../usuarioService';
 import { LoggedService } from 'src/app/utils/logged.service';
 import { passwordValidator } from 'src/app/utils/helpers';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { UsuarioDialog } from 'src/app/dialogs/usuario/usuario.dialog';
 import { ToastrService } from 'ngx-toastr';
 import { OlvidoContrasenaDialog } from '../olvido-contrasena/olvido-contrasena.dialog';

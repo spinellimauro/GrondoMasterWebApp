@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Usuario } from "src/app/models/Usuario";
 import { UsuariosService } from "../usuarioService";
 import { ConfigService } from "src/app/utils/config.service";
-import { MatDialog } from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import { ToastrService } from "ngx-toastr";
 import { UsuarioDialog } from "src/app/dialogs/usuario/usuario.dialog";
 

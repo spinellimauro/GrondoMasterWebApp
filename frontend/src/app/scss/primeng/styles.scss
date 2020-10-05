@@ -2,6 +2,7 @@
 // @import '~primeng/resources/themes/rhea/theme.css';
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/primeng.css';
+@import '~primeng/resources/themes/nova-accent/theme.css';
 // @import '~primeng/resources/themes/nova-light/theme.css';
 
 @media screen and (max-width: 40em) {
@@ -64,7 +65,7 @@
 }
 
 body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
-  background-color: #D30D4B;
+  background-color: #d30d4b;
 }
 
 body .ui-paginator {
@@ -75,18 +76,18 @@ body .ui-paginator {
 }
 
 body .ui-table .ui-sortable-column.ui-state-highlight {
-  background-color: #D30D4B;
+  background-color: #d30d4b;
 }
 
 body .ui-multiselect {
   background: #ffffff;
-  border: 1px solid #D30D4B;
+  border: 1px solid #d30d4b;
   transition: border-color 0.2s;
 }
 
 body .ui-corner-all {
   // border-radius: 0px;
-  border-style: 1px solid #D30D4B;
+  border-style: 1px solid #d30d4b;
 }
 
 body .ui-inputtext {
@@ -98,35 +99,35 @@ body .ui-inputtext {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-style: 1px solid #D30D4B;
+  border-style: 1px solid #d30d4b;
 }
 
 body .ui-multiselect:not(.ui-state-disabled):hover {
-  border-color: #E3678E;
+  border-color: #e3678e;
 }
 
 body .ui-inputtext:enabled:focus:not(.ui-state-error) {
-  border-color: #D30D4B;
+  border-color: #d30d4b;
   outline: 0 none;
   box-shadow: none;
 }
 
 body .ui-inputtext:enabled {
-  border-color: #D30D4B;
+  border-color: #d30d4b;
   outline: 0 none;
   box-shadow: none;
 }
 
 body .ui-inputtext:enabled:hover:not(.ui-state-error) {
-  border-color: #E3678E;
+  border-color: #e3678e;
   outline: 0 none;
   box-shadow: none;
 }
 
 .pi-search:before {
-  color: #D30D4B;
-  border-color: #E3678E;
-  border-style: 1px solid #D30D4B;
+  color: #d30d4b;
+  border-color: #e3678e;
+  border-style: 1px solid #d30d4b;
 }
 
 body .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight {
@@ -135,31 +136,31 @@ body .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-h
 }
 
 .pi-check:before {
-  color: #D30D4B;
+  color: #d30d4b;
   background-color: white;
-  border-style: 1px solid #D30D4B;
-  border-color: #E3678E;
+  border-style: 1px solid #d30d4b;
+  border-color: #e3678e;
 }
 
 body .ui-chkbox .ui-chkbox-box .ui-chkbox-icon {
   overflow: hidden;
   position: relative;
   font-size: 18px;
-  border-color: #D30D4B;
-  border-style: 1px solid #D30D4B;
+  border-color: #d30d4b;
+  border-style: 1px solid #d30d4b;
 }
 
 body .ui-chkbox .ui-chkbox-box.ui-state-active {
-  border-color: #D30D4B;
-  background-color: #D30D4B;
+  border-color: #d30d4b;
+  background-color: #d30d4b;
   color: #ffffff;
 }
 
 .pi-check:after {
-  color: #D30D4B;
+  color: #d30d4b;
   background-color: white;
-  border-color: #D30D4B;
-  border-style: 1px solid #D30D4B;
+  border-color: #d30d4b;
+  border-style: 1px solid #d30d4b;
 }
 
 body .ui-toast .ui-toast-message.ui-toast-message-error {
@@ -174,15 +175,14 @@ body .ui-toast .ui-toast-message.ui-toast-message-error .ui-toast-close-icon {
 }
 
 body .ui-rating:not(.ui-state-disabled):not(.ui-rating-readonly) a:hover {
-  color: #D30D4B;
+  color: #d30d4b;
 }
 
 body .ui-button {
   margin: 0;
   color: #ffffff;
-  background-color: #D30D4B;
-  border: 1px solid #D30D4B;
-
+  background-color: #d30d4b;
+  border: 1px solid #d30d4b;
 }
 
 body .ui-inputtext,
@@ -203,7 +203,7 @@ body .ui-inputtext,
 
 .passwordField {
   width: 100%;
-  border: 1px solid #D30D4B;
+  border: 1px solid #d30d4b;
 }
 
 // body .ui-inputtext:enabled:hover:not(.ui-state-error) {
@@ -211,7 +211,7 @@ body .ui-inputtext,
 // }
 
 body .ui-table .ui-editable-column input:focus {
-  outline: 2px solid #D30D4B;
+  outline: 2px solid #d30d4b;
 
   display: block;
   box-sizing: border-box;
@@ -219,7 +219,7 @@ body .ui-table .ui-editable-column input:focus {
   height: 2.4375rem;
   margin: 0 0 1rem;
   padding: 0.5rem;
-  border: 10px solid #D30D4B;
+  border: 10px solid #d30d4b;
   border-radius: 0;
   background-color: #ffffff;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -230,4 +230,25 @@ body .ui-table .ui-editable-column input:focus {
   color: #000000;
   transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
   -webkit-appearance: none;
+}
+
+.p-datatable-resizable .p-datatable-tbody>tr>td,
+.p-datatable-resizable .p-datatable-tfoot>tr>td,
+.p-datatable-resizable .p-datatable-thead>tr>th {
+  white-space: normal !important;
+}
+
+.p-datatable .p-sortable-column.p-highlight {
+  color: #333333;
+  background: #f4f4f4;
+}
+
+.p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
+  color: #848484;
+}
+
+.p-datatable .p-datatable-tbody {
+  >tr:nth-child(odd) {
+    background: #eeeff0;
+  }
 }

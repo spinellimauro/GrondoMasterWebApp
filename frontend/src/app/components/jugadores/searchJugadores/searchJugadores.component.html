@@ -1,11 +1,10 @@
 <p-table [value]="jugadores" [rows]="10" [paginator]="true" [responsive]="true" sortField="nivel" [sortOrder]="-1"
-  [resizableColumns]="true" columnResizeMode="expand"
-  [globalFilterFields]="['nombre', 'nacionalidadCorta', 'nivel', 'potencial']" [columns]="cols"
-  [reorderableColumns]="true">
+  [resizableColumns]="true" [columns]="cols" [reorderableColumns]="true" class="alinearCentro">
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of cols">
+      <th *ngFor="let col of cols" pReorderableColumn pResizableColumn pSortableColumn="{{col.field}}">
         {{col.header}}
+        <p-sortIcon field="{{col.field}}"></p-sortIcon>
       </th>
       <th>
         Acciones
@@ -13,8 +12,8 @@
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jugador>
-    <tr>
-      <td *ngFor="let col of cols" class="alinearCentro">
+    <tr class="ajustarTexto">
+      <td *ngFor="let col of cols">
         <img *ngIf="col.header == 'Nombre'" width="60" height="60"
           src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)" />
         <img *ngIf="col.header == 'Nacionalidad'" width="40" height="32"
@@ -22,7 +21,7 @@
         <div *ngIf="col.header != 'Nacionalidad'"> {{jugador[col.field]}} </div>
       </td>
       <td>
-        <button pButton pRipple type="button" label="Editar"></button>
+        <button pButton pRipple type="button" label="Ver" class="p-button-success"></button>
         <!-- <p-button icon="fas fa-edit" (click)="editar(usuario.id)"></p-button>
           <p-button icon="fas fa-trash-alt" (click)="borrar(usuario.id)"></p-button> -->
       </td>

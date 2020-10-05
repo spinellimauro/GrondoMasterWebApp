@@ -36,7 +36,6 @@ export class SearchJugadoresComponent implements OnInit {
   }
 
   changeSource($event) {
-    $event.target.src =
-      '../../../../assets/images/notfound_0_120.png';
+    $event.target.src = '../../../../assets/images/notfound_0_120.png';
   }
 }
