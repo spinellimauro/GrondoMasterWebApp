@@ -17,16 +17,21 @@
         <img *ngIf="col.header == 'Nombre'" width="60" height="60"
           src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)" />
         <img *ngIf="col.header == 'Nacionalidad'" width="40" height="32"
-          src="https://www.banderas-mundo.es/data/flags/w1600/{{jugador.nacionalidadCorta}}.png"/>
-        <div *ngIf="col.header != 'Nacionalidad' && col.header != 'Nivel' && col.header != 'Potencial'"> {{jugador[col.field]}} </div>
+          src="https://www.banderas-mundo.es/data/flags/w1600/{{jugador.nacionalidadCorta}}.png" />
+        <div *ngIf="col.header != 'Nacionalidad' && col.header != 'Nivel' && col.header != 'Potencial'">
+          {{jugador[col.field]}} </div>
         <span *ngIf="col.header == 'Nivel'" class='tag p-{{jugador.nivel}} p'>{{jugador[col.field]}}</span>
         <span *ngIf="col.header == 'Potencial'" class='tag p-{{jugador.potencial}} p'>{{jugador[col.field]}}</span>
       </td>
       <td>
-          <button title="Comprar" pButton type="button" icon="fas fa-dollar-sign" class="ui-button-success"></button>
-          <button title="Ofertar" pButton type="button" icon="fas fa-comment-dollar" class="ui-button-warning"></button>
-          <button title="Vender A La Maquina" pButton type="button" icon="fas fa-minus-circle" class="ui-button-danger"></button>
-          <button title="Poner En Venta" pButton type="button" icon="fas fa-tag" class="ui-button-info"></button>
+        <button pButton pRipple type="button" label="Comprar" icon="fas fa-dollar-sign"
+          class="p-button-success"></button>
+        <button pButton pRipple type="button" label="Ofertar" icon="fas fa-comment-dollar"
+          class="p-button-success"></button>
+        <button pButton pRipple type="button" label="Vender A La Maquina" icon="fas fa-minus-circle"
+          class="p-button-success"></button>
+        <button pButton pRipple type="button" label="Poner En Venta" icon="fas fa-tag"
+          class="p-button-success"></button>
       </td>
 
     </tr>
