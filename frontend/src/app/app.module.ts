@@ -39,6 +39,12 @@ import { SearchJugadoresComponent } from './components/jugadores/searchJugadores
 import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
 import { JugadorService } from './components/jugadores/jugadorService';
 import { UtilService } from './utils/util.service';
+import { RegistroComponent } from './components/usuarios/Registro/registro.component';
+import {
+  SpinnerComponent,
+  SpinnerInterceptor,
+  SpinnerService,
+} from './components/spinner/spinner.component';
 
 // registerLocaleData(localeEsAr, localeEsArExtra)
 
@@ -52,6 +58,8 @@ import { UtilService } from './utils/util.service';
     CambiarContrasenaComponent,
     UsuarioDialog,
     OlvidoContrasenaDialog,
+    RegistroComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +87,7 @@ import { UtilService } from './utils/util.service';
     ConfirmarEmailComponent,
     UsuarioDialog,
     UsuariosComponent,
+    RegistroComponent,
     SearchJugadoresComponent,
     CambiarContrasenaComponent,
     OlvidoContrasenaDialog,
@@ -95,10 +104,15 @@ import { UtilService } from './utils/util.service';
     UsuariosService,
     JugadorService,
     UtilService,
-
+    SpinnerService,
     { provide: LOCALE_ID, useValue: 'es-AR' },
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
     { provide: ErrorHandler, useClass: AppErrorHandler },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true,
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: (config: ConfigService) =>

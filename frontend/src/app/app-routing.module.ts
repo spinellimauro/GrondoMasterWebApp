@@ -6,6 +6,7 @@ import { LoggedGuard } from './utils/logged.guard';
 import { CambiarContrasenaComponent } from './components/usuarios/cambiarcontrasena/cambiarcontrasena.component';
 import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
 import { SearchJugadoresComponent } from './components/jugadores/searchJugadores/searchJugadores.component';
+import { RegistroComponent } from './components/usuarios/Registro/registro.component';
 
 const routes: Routes = [
   { path: 'home', redirectTo: '' },
@@ -19,6 +20,11 @@ const routes: Routes = [
     path: 'users',
     component: UsuariosComponent,
     canActivate: [LoggedGuard],
+    data: { label: 'Nuevo Pedido' },
+  },
+  {
+    path: 'register',
+    component: RegistroComponent,
     data: { label: 'Nuevo Pedido' },
   },
   {

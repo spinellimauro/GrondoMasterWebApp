@@ -1,3 +1,4 @@
+<app-spinner></app-spinner>
 <mat-toolbar color="primary" *ngIf="isLogged()">
   <mat-toolbar-row class="grid-x grid-padding-x align-justify">
     <div class="cell small-4">
@@ -22,9 +23,9 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="grid-x">
-  <div class="medium-2 large-2 cell"></div>
-  <div class="medium-8 large-8 cell">
+<div [ngClass]="{'grid-x': isLogged()}">
+  <div [ngClass]="{'medium-2 large-2 cell': isLogged()}"></div>
+  <div [ngClass]="{'medium-8 large-8 cell': isLogged()}">
     <div style="background-color: white;">
       <div class="main">
         <div class="content">
@@ -33,5 +34,5 @@
       </div>
     </div>
   </div>
-  <div class="medium-2 large-2 cell"></div>
+  <div [ngClass]="{'medium-2 large-2 cell': isLogged()}"></div>
 </div>

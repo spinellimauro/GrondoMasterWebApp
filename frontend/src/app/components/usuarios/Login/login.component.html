@@ -1,51 +1,48 @@
 <div class="mainLogin">
-  <div class="grid-container grid-container-padded grid--demo">
-    <div class="grid-x grid-padding-x align-center-middle text-center" style="height: 40em;">
-      <div class="cell medium-10 large-8">
-        <mat-card style="padding-left: 0 !important; padding-right: 0 !important;">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="grid-y grid-margin-y cardLogin">
+  <div class="cell medium-10 large-8">
+    <mat-card class="sizeCard" style="padding-left: 0 !important; padding-right: 0 !important;">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="grid-y grid-margin-y cardLogin">
 
-              <div class="cell grid-x align-center">
-                <mat-form-field class="cell small-8">
-                  <mat-placeholder>
-                    <mat-icon>mail</mat-icon> Email
-                  </mat-placeholder>
-                  <input matInput name="LoginUserName" formControlName="username">
-                  <mat-error *ngIf="loginForm.get('username').hasError('required')">
-                    {{ Validaciones.Login.Usuario }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
+          <div class="cell grid-x align-center">
+            <mat-form-field class="cell small-8">
+              <mat-placeholder>
+                <mat-icon>mail</mat-icon> Email
+              </mat-placeholder>
+              <input matInput name="LoginUserName" formControlName="username">
+              <mat-error *ngIf="loginForm.get('username').hasError('required')">
+                {{ Validaciones.Login.Usuario }}
+              </mat-error>
+            </mat-form-field>
+          </div>
 
-              <div class="cell grid-x align-center">
-                <mat-form-field class="cell small-8">
-                  <mat-placeholder>
-                    <mat-icon>vpn_key</mat-icon> Contraseña
-                  </mat-placeholder>
-                  <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="off">
-                  <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
-                  <mat-error *ngIf="loginForm.get('password').hasError('required')">
-                    {{ Validaciones.Login.Password }}
-                  </mat-error>
-                </mat-form-field>
-              </div>
+          <div class="cell grid-x align-center">
+            <mat-form-field class="cell small-8">
+              <mat-placeholder>
+                <mat-icon>vpn_key</mat-icon> Contraseña
+              </mat-placeholder>
+              <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" autocomplete="off">
+              <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+              <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                {{ Validaciones.Login.Password }}
+              </mat-error>
+            </mat-form-field>
+          </div>
 
-              <div class="cell grid-x align-center">
-                <div class="cell shrink">
-                  <button mat-raised-button [disabled]="loginForm.invalid" type="submit" color="primary">Entrar</button>
-                </div>
-              </div>
-              <div class="cell grid-x align-center">
-                <div class="cell shrink">
-                  <a mat-button (click)="forgotPassword()" color="primary">¿Olvidó su contraseña?</a> ó
-                  <a mat-button (click)="registro()" color="primary">Regístrese</a>
-                </div>
-              </div>
+          <div class="cell grid-x align-center">
+            <div class="cell shrink">
+              <button mat-raised-button [disabled]="loginForm.invalid" type="submit" color="primary">Entrar</button>
             </div>
-          </form>
-        </mat-card>
-      </div>
-    </div>
+          </div>
+          <div class="cell grid-x align-center">
+            <div class="cell shrink">
+              <a mat-button (click)="forgotPassword()" color="primary">¿Olvidó su contraseña?</a> ó
+              <!-- <a mat-button (click)="registro()" color="primary">Regístrese</a> -->
+              <a mat-button routerLink="/register" color="primary">Regístrese</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-card>
   </div>
 </div>
