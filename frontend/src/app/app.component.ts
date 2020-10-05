@@ -4,6 +4,7 @@ import { LoggedService } from './utils/logged.service';
 import { ILogged } from './interfaces/ILogged';
 import { MatMenuTrigger } from '@angular/material';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
