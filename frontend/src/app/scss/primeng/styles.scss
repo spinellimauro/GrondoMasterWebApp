@@ -2,17 +2,16 @@
 // @import '~primeng/resources/themes/rhea/theme.css';
 @import '~primeicons/primeicons.css';
 @import '~primeng/resources/primeng.css';
-@import '~primeng/resources/themes/nova-accent/theme.css';
+@import '~primeng/resources/themes/luna-pink/theme.css';
 // @import '~primeng/resources/themes/nova-light/theme.css';
 
 @media screen and (max-width: 40em) {
-
-  .ui-table-responsive .ui-table-thead>tr>th,
-  .ui-table-responsive .ui-table-tfoot>tr>td {
+  .ui-table-responsive .ui-table-thead > tr > th,
+  .ui-table-responsive .ui-table-tfoot > tr > td {
     display: block !important;
   }
 
-  .ui-table-responsive .ui-table-tbody>tr>td {
+  .ui-table-responsive .ui-table-tbody > tr > td {
     text-align: left;
     display: block;
     border: 0 none;
@@ -24,7 +23,7 @@
     clear: left;
   }
 
-  .ui-table-responsive .ui-table-tbody>tr>td .ui-column-title {
+  .ui-table-responsive .ui-table-tbody > tr > td .ui-column-title {
     padding: 0.4em;
     min-width: 30%;
     display: inline-block;
@@ -42,7 +41,7 @@
     border-top: 0px solid #c8c8c8;
   }
 
-  body .ui-table.ui-table-responsive .ui-table-tbody>tr>td {
+  body .ui-table.ui-table-responsive .ui-table-tbody > tr > td {
     border-top: 0px solid #c8c8c8;
   }
 }
@@ -52,7 +51,7 @@
   margin-bottom: 10px;
 }
 
-.ui-table-data>tr>td {
+.ui-table-data > tr > td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -130,7 +129,10 @@ body .ui-inputtext:enabled:hover:not(.ui-state-error) {
   border-style: 1px solid #d30d4b;
 }
 
-body .ui-multiselect-panel .ui-multiselect-items .ui-multiselect-item.ui-state-highlight {
+body
+  .ui-multiselect-panel
+  .ui-multiselect-items
+  .ui-multiselect-item.ui-state-highlight {
   color: #ffffff;
   background-color: white;
 }
@@ -232,23 +234,23 @@ body .ui-table .ui-editable-column input:focus {
   -webkit-appearance: none;
 }
 
-.p-datatable-resizable .p-datatable-tbody>tr>td,
-.p-datatable-resizable .p-datatable-tfoot>tr>td,
-.p-datatable-resizable .p-datatable-thead>tr>th {
+.p-datatable-resizable .p-datatable-tbody > tr > td,
+.p-datatable-resizable .p-datatable-tfoot > tr > td,
+.p-datatable-resizable .p-datatable-thead > tr > th {
   white-space: normal !important;
 }
 
 .p-datatable .p-sortable-column.p-highlight {
-  color: #333333;
-  background: #f4f4f4;
+  color: #dedede;
+  background: #252525;
 }
 
 .p-datatable .p-sortable-column.p-highlight .p-sortable-column-icon {
   color: #848484;
 }
 
-.p-datatable .p-datatable-tbody {
-  >tr:nth-child(odd) {
-    background: #eeeff0;
-  }
-}
+// .p-datatable .p-datatable-tbody {
+//   >tr:nth-child(odd) {
+//     background: #eeeff0;
+//   }
+// }
