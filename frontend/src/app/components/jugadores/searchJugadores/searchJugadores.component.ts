@@ -29,9 +29,14 @@ export class SearchJugadoresComponent implements OnInit {
     ];
 
     this.jugadorService
-      .getJugadoresBySearch('Vinicius')
+      .getJugadoresBySearch('martinez')
       .subscribe((jugadores: Jugador[]) => {
-        this.jugadores = jugadores;
+        jugadores.forEach(jugador => {
+          var nacionalidadLowerCase = jugador.nacionalidad.toLowerCase();
+          jugador.nacionalidad = nacionalidadLowerCase;
+          this.jugadores = jugadores;
+        });
+       
       });
   }
 
