@@ -1,5 +1,5 @@
-<!-- <app-spinner></app-spinner>
-<mat-toolbar color="primary" *ngIf="isLogged()" style="margin-bottom: 2em;">
+ <app-spinner></app-spinner>
+ <!--<mat-toolbar color="primary" *ngIf="isLogged()" style="margin-bottom: 2em;">
   <mat-toolbar-row class="grid-x grid-padding-x align-justify">
     <div class="cell small-4">
       <button mat-button (click)="toHome()">
@@ -23,7 +23,7 @@
   </mat-toolbar-row>
 </mat-toolbar> -->
 
-<p-menubar [model]="items">
+<p-menubar *ngIf="isLogged()" [model]="items">
   <ng-template pTemplate="start">
   </ng-template>
   <ng-template pTemplate="end">
