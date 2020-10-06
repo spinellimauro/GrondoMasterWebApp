@@ -1,6 +1,6 @@
 <div class="p-col-12 p-md-4">
   <div class="p-inputgroup">
-      <input type="text" pInputText placeholder="Busqueda" [(ngModel)]="busqueda">   
+      <input type="text" pInputText placeholder="Busqueda" [(ngModel)]="busqueda" (keydown.enter)="buscar()">   
       <button type="submit" pButton pRipple icon="pi pi-search" styleClass="p-button-warn" (click)="buscar()"></button>      
   </div>
 </div>
