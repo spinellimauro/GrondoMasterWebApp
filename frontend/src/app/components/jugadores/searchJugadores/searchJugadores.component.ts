@@ -24,12 +24,14 @@ export class SearchJugadoresComponent implements OnInit {
     this.cols = [
       { field: 'nombre', header: 'Nombre' },
       { field: 'nacionalidadCorta', header: 'Nacionalidad' },
+      { field: 'edad', header: 'Edad' },
+      { field: 'posiciones', header: 'Posiciones' },
       { field: 'nivel', header: 'Nivel' },
-      { field: 'potencial', header: 'Potencial' },
+      { field: 'potencial', header: 'Potencial' }
     ];
 
     this.jugadorService
-      .getJugadoresBySearch('martinez')
+      .getJugadoresBySearch('Vinicius')
       .subscribe((jugadores: Jugador[]) => {
         jugadores.forEach(jugador => {
           var nacionalidadLowerCase = jugador.nacionalidad.toLowerCase();

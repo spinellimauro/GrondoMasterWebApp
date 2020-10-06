@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SoFifaRepository {
 
@@ -29,7 +30,8 @@ public class SoFifaRepository {
                 jugador.setNacionalidad(cols.get(1).select("img").attr("title"));
                 jugador.setNacionalidadCorta(jugador.getNacionalidad().substring(0,2).toLowerCase());
                 jugador.setId(Integer.valueOf(cols.get(0).select("img").attr("id")));
-                //jugador.posiciones = newArrayList(cols.get(2).select("span").map[text]);
+                jugador.setEdad(Integer.parseInt(cols.get(2).text()));
+                jugador.setPosiciones(cols.get(1).select("span").text());
                 jugador.setNivel(Integer.parseInt(cols.get(3).text()));
                 jugador.setPotencial(Integer.parseInt(cols.get(4).text()));
 

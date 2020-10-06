@@ -12,6 +12,7 @@ import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,9 @@ import { InputTextModule } from 'primeng/inputtext';
     MessagesModule,
     ToolbarModule,
     TooltipModule,
+    MenubarModule,
+    
+    
   ],
   exports: [
     TreeTableModule,
@@ -42,6 +46,7 @@ import { InputTextModule } from 'primeng/inputtext';
     MessagesModule,
     ToolbarModule,
     TooltipModule,
+    MenubarModule,
   ],
 })
 export class PrimeNGModule {}

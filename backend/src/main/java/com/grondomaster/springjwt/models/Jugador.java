@@ -2,6 +2,8 @@ package com.grondomaster.springjwt.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +26,9 @@ public class Jugador {
 	
 	@Transient
 	private String nacionalidadCorta;
-
+	
+	private String posiciones;
+	private int edad;
 	private int nivel;
 	private int potencial;
 	
@@ -122,6 +126,14 @@ public class Jugador {
 		this.nombre = nombre;
 	}
 
+	public int getEdad() {
+		return edad;
+	}
+
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+	
 	public String getNacionalidad() {
 		return nacionalidad;
 	}
@@ -146,6 +158,15 @@ public class Jugador {
 		this.nivel = nivel;
 	}
 
+	
+	public String getPosiciones() {
+		return posiciones;
+	}
+
+	public void setPosiciones(String posiciones) {
+		 this.posiciones = posiciones;
+	}
+	
 	public int getPotencial() {
 		return potencial;
 	}
@@ -193,5 +214,7 @@ public class Jugador {
 	public void setEquipo(Equipo equipo) {
 		this.equipo = equipo;
 	}
+	
+	
 
 }

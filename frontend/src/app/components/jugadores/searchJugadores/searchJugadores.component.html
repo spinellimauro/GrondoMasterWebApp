@@ -2,6 +2,8 @@
   [resizableColumns]="true" [columns]="cols" [reorderableColumns]="true" class="alinearCentro">
   <ng-template pTemplate="header">
     <tr>
+      <th pReorderableColumn pResizableColumn>
+      </th>
       <th *ngFor="let col of cols" pReorderableColumn pResizableColumn pSortableColumn="{{col.field}}">
         {{col.header}}
         <p-sortIcon field="{{col.field}}"></p-sortIcon>
@@ -13,9 +15,13 @@
   </ng-template>
   <ng-template pTemplate="body" let-jugador>
     <tr class="ajustarTexto">
-      <td *ngFor="let col of cols">
-        <img *ngIf="col.header == 'Nombre'" width="60" height="60"
+      <td>
+        <img width="50" height="50"
           src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)" />
+      </td>
+      <td *ngFor="let col of cols">
+        <!--<img *ngIf="col.header == 'Nombre'" width="60" height="60"
+          src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)" />-->  
         <img *ngIf="col.header == 'Nacionalidad'" width="40" height="32"
           src="https://www.banderas-mundo.es/data/flags/w1600/{{jugador.nacionalidadCorta}}.png" />
         <div *ngIf="col.header != 'Nacionalidad' && col.header != 'Nivel' && col.header != 'Potencial'">
@@ -24,14 +30,14 @@
         <span *ngIf="col.header == 'Potencial'" class='tag p-{{jugador.potencial}} p'>{{jugador[col.field]}}</span>
       </td>
       <td>
-         <button pButton pRipple type="button" label="Comprar" icon="fas fa-dollar-sign"
-          class="p-button-rounded p-button-success"></button> 
-        <button pButton pRipple type="button" label="Ofertar" icon="fas fa-comment-dollar"
-          class="p-button-rounded p-button-warning"></button> 
+         <!--<button pButton pRipple type="button" label="Comprar" icon="fas fa-dollar-sign"
+          class="p-button-rounded p-button-success" style="margin: 3px"></button>-->  
+        <!--<button pButton pRipple type="button" label="Ofertar" icon="fas fa-comment-dollar"
+          class="p-button-rounded p-button-warning" style="margin: 3px"></button>  -->  
         <button pButton pRipple type="button" label="Vender A La Maquina" icon="fas fa-minus-circle"
           class="p-button-rounded p-button-danger"></button>
-        <button pButton pRipple type="button" label="Poner En Venta" icon="fas fa-tag"
-          class="p-button-rounded p-button-info"></button> 
+        <!--<button pButton pRipple type="button" label="Poner En Venta" icon="fas fa-tag"
+          class="p-button-rounded p-button-info" style="margin: 3px"></button>--> 
       </td>
 
     </tr>
