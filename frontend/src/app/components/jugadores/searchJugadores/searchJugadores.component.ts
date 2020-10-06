@@ -11,7 +11,7 @@ import { JugadorService } from '../jugadorService';
 })
 export class SearchJugadoresComponent implements OnInit {
   jugadores: Jugador[] = [];
-
+  busqueda = '';
   cols: any[] = [];
 
   constructor(
@@ -30,8 +30,16 @@ export class SearchJugadoresComponent implements OnInit {
       { field: 'potencial', header: 'Potencial' }
     ];
 
+    
+  }
+
+  changeSource($event) {
+    $event.target.src = '../../../../assets/images/notfound_0_120.png';
+  }
+
+  buscar() {
     this.jugadorService
-      .getJugadoresBySearch('Vinicius')
+      .getJugadoresBySearch(this.busqueda)
       .subscribe((jugadores: Jugador[]) => {
         jugadores.forEach(jugador => {
           var nacionalidadLowerCase = jugador.nacionalidad.toLowerCase();
@@ -40,9 +48,5 @@ export class SearchJugadoresComponent implements OnInit {
         });
        
       });
-  }
-
-  changeSource($event) {
-    $event.target.src = '../../../../assets/images/notfound_0_120.png';
   }
 }

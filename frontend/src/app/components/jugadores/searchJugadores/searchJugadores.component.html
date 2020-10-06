@@ -1,3 +1,9 @@
+<div class="p-col-12 p-md-4">
+  <div class="p-inputgroup">
+      <input type="text" pInputText placeholder="Busqueda" [(ngModel)]="busqueda">   
+      <button type="submit" pButton pRipple icon="pi pi-search" styleClass="p-button-warn" (click)="buscar()"></button>      
+  </div>
+</div>
 <p-table [value]="jugadores" [rows]="10" [paginator]="true" [responsive]="true" sortField="nivel" [sortOrder]="-1"
   [resizableColumns]="true" [columns]="cols" [reorderableColumns]="true" class="alinearCentro">
   <ng-template pTemplate="header">
@@ -16,7 +22,7 @@
   <ng-template pTemplate="body" let-jugador>
     <tr class="ajustarTexto">
       <td>
-        <img width="50" height="50"
+        <img class="avatar" width="50" height="50"
           src="https://futhead.cursecdn.com/static/img/21/players/{{jugador.id}}.png" (error)="changeSource($event)" />
       </td>
       <td *ngFor="let col of cols">
@@ -29,13 +35,13 @@
         <span *ngIf="col.header == 'Nivel'" class='tag p-{{jugador.nivel}} p'>{{jugador[col.field]}}</span>
         <span *ngIf="col.header == 'Potencial'" class='tag p-{{jugador.potencial}} p'>{{jugador[col.field]}}</span>
       </td>
-      <td>
-         <!--<button pButton pRipple type="button" label="Comprar" icon="fas fa-dollar-sign"
-          class="p-button-rounded p-button-success" style="margin: 3px"></button>-->  
-        <!--<button pButton pRipple type="button" label="Ofertar" icon="fas fa-comment-dollar"
-          class="p-button-rounded p-button-warning" style="margin: 3px"></button>  -->  
-        <button pButton pRipple type="button" label="Vender A La Maquina" icon="fas fa-minus-circle"
-          class="p-button-rounded p-button-danger"></button>
+      <td> 
+        <button pButton pRipple type="button" label="Comprar" icon="fas fa-dollar-sign"
+          class="p-button-rounded p-button-success" style="margin: 3px"></button>
+        <button pButton pRipple type="button" label="Ofertar" icon="fas fa-comment-dollar"
+          class="p-button-rounded p-button-warning" style="margin: 3px"></button>  
+        <!--<button pButton pRipple type="button" label="Vender A La Maquina" icon="fas fa-minus-circle"
+          class="p-button-rounded p-button-danger"></button>--> 
         <!--<button pButton pRipple type="button" label="Poner En Venta" icon="fas fa-tag"
           class="p-button-rounded p-button-info" style="margin: 3px"></button>--> 
       </td>
@@ -44,7 +50,7 @@
   </ng-template>
   <ng-template pTemplate="emptymessage" let-cols>
     <tr>
-      <td [attr.colspan]="cols.length + 1">
+      <td [attr.colspan]="cols.length + 2">
         No se encontraron resultados
       </td>
     </tr>
