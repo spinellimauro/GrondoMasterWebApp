@@ -27,7 +27,17 @@
   <ng-template pTemplate="start">
   </ng-template>
   <ng-template pTemplate="end">
-      <input type="text" pInputText placeholder="Search">
+    <button mat-button [matMenuTriggerFor]="menu">Bienvenido/a {{logged?.Name}}</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item class="widthAuto" routerLink="/cambio-contrasena">
+        <mat-icon mat-list-icon>vpn_key</mat-icon>
+        Cambiar contraseña
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        Cerrar sesión
+      </button>
+    </mat-menu>
   </ng-template>
 </p-menubar>
 
