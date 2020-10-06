@@ -18,7 +18,6 @@ public class SoFifaRepository {
         List<Jugador> jugadores = new ArrayList<>();
         try {
             Document document = Jsoup.connect("http://sofifa.com/players?keyword=" + string + "&layout=2017desktop&hl=es-ES").userAgent("Mozilla").post();
-            Thread.sleep(1000);
             Elements tabla = document.select("tbody > tr");
 
             for (int i = 0; i < tabla.size(); i++) { //first row is the col names so skip it.
@@ -37,7 +36,7 @@ public class SoFifaRepository {
 
                 jugadores.add(jugador);
             }
-        } catch (IOException | InterruptedException ex) {
+        } catch (IOException ex) {
             System.out.println("Excepción al obtener el Status Code: " + ex.getMessage());
         }
 
@@ -65,6 +64,36 @@ public class SoFifaRepository {
         }
 
         return equipos;
+    }
+    
+    
+    
+    public static List<Jugador> getJugadoresRandom(String posicion,String edad,String nivel) throws IOException {
+    	List<Jugador> jugadores = new ArrayList<>();
+        try {
+        	Document document = Jsoup.connect("https://sofifa.com/players?type=all&ael="+ edad +"&aeh="+ edad +"&oal="+ nivel +"&oah="+ nivel +"&pn%5B%5D="+ posicion).userAgent("Mozilla").post();
+            Elements tabla = document.select("tbody > tr");
+
+            for (int i = 0; i < tabla.size(); i++) { //first row is the col names so skip it.
+                Element row = tabla.get(i);
+                Elements cols = row.select("td");
+
+                Jugador jugador = new Jugador();
+                jugador.setNombre(cols.get(1).select("a").attr("data-tooltip"));
+                jugador.setNacionalidad(cols.get(1).select("img").attr("title"));
+                jugador.setNacionalidadCorta(jugador.getNacionalidad().substring(0,2).toLowerCase());
+                jugador.setId(Integer.valueOf(cols.get(0).select("img").attr("id")));
+                //jugador.posiciones = newArrayList(cols.get(2).select("span").map[text]);
+                jugador.setNivel(Integer.parseInt(cols.get(3).text()));
+                jugador.setPotencial(Integer.parseInt(cols.get(4).text()));
+
+                jugadores.add(jugador);
+            }
+        } catch (IOException ex) {
+            System.out.println("Excepción al obtener el Status Code: " + ex.getMessage());
+        }
+
+        return jugadores;
     }
 
 }

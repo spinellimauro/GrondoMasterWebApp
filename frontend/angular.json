@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "wwwroot"
+  "defaultProject": "wwwroot",
+  "cli": {
+    "analytics": "8eea9424-1366-4133-8f5b-4d7082b6307a"
+  }
 }
