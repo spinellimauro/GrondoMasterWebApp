@@ -5,7 +5,6 @@ import { ILogged } from './interfaces/ILogged';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MenuItem, PrimeNGConfig } from 'primeng/api';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -35,62 +34,76 @@ export class AppComponent implements OnInit {
 
     if (!this.isLogged) this.router.navigateByUrl('login');
 
-    console.log(this.logged);
-
     this.items = [
       {
-        icon: 'fas fa-home'
+        icon: 'fas fa-home',
       },
       {
-          label: 'Equipo',
-          icon: 'fas fa-tshirt',
-          items: [{
-                  label: 'Plantilla', 
-                  icon: 'far fa-list-alt',
-              },
-              {
-                label: 'Ofertas',
-                icon: 'fas fa-comment-dollar'
-              }
-          ]
+        label: 'Equipo',
+        icon: 'fas fa-tshirt',
+        items: [
+          {
+            label: 'Plantilla',
+            icon: 'far fa-list-alt',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Ofertas',
+            icon: 'fas fa-comment-dollar',
+          },
+        ],
       },
       {
-          label: 'Mercado',
-          icon: 'fas fa-hand-holding-usd',
-          items: [
-              {
-                label: 'Sofifa',
-                icon: 'fas fa-search-dollar'
-              },
-              {
-                label: 'Transferibles',
-                icon: 'fas fa-coins'
-              },
-              {
-                label: 'Traspasos',
-                icon: 'fas fa-exchange-alt'
-              },
-              {
-                label: 'Equipos',
-                icon: 'fas fa-users'
-              }
-          ]
+        label: 'Mercado',
+        icon: 'fas fa-hand-holding-usd',
+        items: [
+          {
+            label: 'Sofifa',
+            icon: 'fas fa-search-dollar',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Transferibles',
+            icon: 'fas fa-coins',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Traspasos',
+            icon: 'fas fa-exchange-alt',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Equipos',
+            icon: 'fas fa-users',
+          },
+        ],
       },
       {
-          label: 'Torneo',
-          icon: 'far fa-calendar-alt',
-          items: [
-              {
-                label: 'Fixture',
-                icon: 'fas fa-calendar-day'
-              },
-              {
-                label: 'Estadisticas',
-                icon: 'fas fa-chart-bar'
-              }
-          ]
-      }
-  ];
+        label: 'Torneo',
+        icon: 'far fa-calendar-alt',
+        items: [
+          {
+            label: 'Fixture',
+            icon: 'fas fa-calendar-day',
+          },
+          {
+            separator: true,
+          },
+          {
+            label: 'Estadisticas',
+            icon: 'fas fa-chart-bar',
+          },
+        ],
+      },
+    ];
   }
 
   isLogged() {

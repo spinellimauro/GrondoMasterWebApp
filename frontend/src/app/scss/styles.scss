@@ -154,3 +154,13 @@
 .alignToRightContent {
   text-align: right;
 }
+
+.mat-menu-panel.ng-trigger.ng-trigger-transformMenu {
+  background-color: #323232 !important;
+  color: #dedede // #F48FB1
+}
+
+.mat-menu-item,
+.mat-menu-item.mat-icon-no-color.mat-menu-item-submenu-trigger::after {
+  color: #dedede !important;
+}
