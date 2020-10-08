@@ -5,7 +5,7 @@ import { ConfirmarEmailComponent } from './components/usuarios/confirmacion-cont
 import { LoggedGuard } from './utils/logged.guard';
 import { CambiarContrasenaComponent } from './components/usuarios/cambiarcontrasena/cambiarcontrasena.component';
 import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
-import { SearchJugadoresComponent } from './components/jugadores/searchJugadores/searchJugadores.component';
+import { SearchJugadoresComponent } from './components/mercado/searchJugadores/searchJugadores.component';
 import { RegistroComponent } from './components/usuarios/Registro/registro.component';
 
 const routes: Routes = [

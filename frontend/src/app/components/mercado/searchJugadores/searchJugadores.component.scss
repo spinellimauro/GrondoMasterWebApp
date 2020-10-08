@@ -1,0 +1,66 @@
+.tag {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    /* -webkit-box-orient: horizontal; */
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+    border: 0;
+    min-width: 1rem;
+    max-width: 100%;
+    min-height: 1rem;
+    padding: 0 .3rem;
+    line-height: 1.2rem;
+    text-transform: uppercase;
+}
+
+.p-71, .p-72, .p-73, .p-74, .p-75, .p-76, .p-77, .p-78, .p-79, .p-80,.p-81, .p-82
+{
+    background: #9bbf30 !important;
+}
+
+.p-83, .p-84, .p-85, .p-86, .p-87, .p-88, .p-89, .p-90, .p-91, .p-92, .p-93, .p-94, .p-95, .p-96, .p-97, .p-98, .p-99
+{
+    background: #608106 !important;
+}
+
+.p-61, .p-62, .p-63, .p-64, .p-65, .p-66, .p-67, .p-68, .p-69, .p-70 {
+    background: #ffc940 !important;
+}
+
+.p
+{
+    min-width: 1.6rem;
+    text-align: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #FFF;
+    background: #8a9ba8;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(138, 155, 168);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.avatar {
+    height: 3rem;
+    width: 3rem;
+    display: inline-block;
+    font-weight: 300;
+    line-height: 1.25;
+    margin: 0;
+    position: relative;
+    vertical-align: middle;
+    background: #2f2f2f;
+    text-transform: uppercase;
+}

@@ -35,9 +35,9 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { CambiarContrasenaComponent } from './components/usuarios/cambiarcontrasena/cambiarcontrasena.component';
 import { OlvidoContrasenaDialog } from './components/usuarios/olvido-contrasena/olvido-contrasena.dialog';
 import { AuthInterceptor } from './utils/auth.interceptor';
-import { SearchJugadoresComponent } from './components/jugadores/searchJugadores/searchJugadores.component';
+import { SearchJugadoresComponent } from './components/mercado/searchJugadores/searchJugadores.component';
 import { UsuariosComponent } from './components/usuarios/usuarios/usuarios.component';
-import { JugadorService } from './components/jugadores/jugadorService';
+import { JugadorService } from './components/mercado/jugadorService';
 import { UtilService } from './utils/util.service';
 import { RegistroComponent } from './components/usuarios/Registro/registro.component';
 import {
